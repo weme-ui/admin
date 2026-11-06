@@ -88,15 +88,17 @@ export default defineConfig(({ mode }) => {
   const root = process.cwd()
 
   const {
-    VITE_ADMIN_URL,
-    VITE_ADMIN_PORT,
+    VITE_APP_NAME,
+    VITE_APP_STATE,
+    VITE_APP_URL,
+    VITE_APP_PORT,
   } = loadEnv(mode, root)
 
   return {
-    base: VITE_ADMIN_URL,
+    base: VITE_APP_URL,
 
     server: {
-      port: Number(VITE_ADMIN_PORT),
+      port: Number(VITE_APP_PORT),
     },
 
     resolve: {
@@ -146,7 +148,9 @@ export default defineConfig(({ mode }) => {
     },
 
     define: {
-      __VERSION__: JSON.stringify(pkg.version),
+      __APP_NAME__: JSON.stringify(VITE_APP_NAME),
+      __APP_STATE__: JSON.stringify(VITE_APP_STATE),
+      __APP_VERSION__: JSON.stringify(pkg.version),
     },
 
     // https://github.com/vitest-dev/vitest
