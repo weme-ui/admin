@@ -50,18 +50,21 @@
     "postcss"
   ],
 
-  // For vue-router generated files
+  // For generated files
   "files.readonlyInclude": {
+    ".weme/*.*": true,
     "**/auto-imports.d.ts": true,
     "**/components.d.ts": true,
     "**/typed-router.d.ts": true
   },
   "files.watcherExclude": {
+    ".weme/*.*": true,
     "**/auto-imports.d.ts": true,
     "**/components.d.ts": true,
     "**/typed-router.d.ts": true
   },
   "search.exclude": {
+    ".weme/*.*": true,
     "**/auto-imports.d.ts": true,
     "**/components.d.ts": true,
     "**/typed-router.d.ts": true
