@@ -1,4 +1,8 @@
+import type { ComputedRef, Ref } from 'vue'
+import type { RouteLocationMatched } from 'vue-router'
 import type { Module, ModuleDefinition, ModuleHandler, ModuleMenu } from './types'
+import { computed, inject, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { defineMenu, getDeepestMenu, updateMensMeta } from './internal/menu'
 import { sortByAsc } from './internal/utils'
 
@@ -8,7 +12,7 @@ const DEFAULT_MODULE_ACTIVE_ICON = 'ri:apps-fill'
 /**
  * The modules injection key is used to inject the modules into the application.
  */
-export const MODULES_INJECTION_KEY = Symbol('weme.runtime.modules')
+export const MODULE_INJECTION_KEY = Symbol('weme.runtime.module')
 
 /**
  * Define a module
@@ -109,8 +113,8 @@ interface UseModulesReturn {
 export function useModules(): UseModulesReturn {
   const route = useRoute()
 
-  const leading = computed(() => route.matched[0])
-  const store = inject<Ref<Module[]>>(MODULES_INJECTION_KEY, ref<Module[]>([]))
+  const leading = computed<RouteLocationMatched>(() => route.matched[0])
+  const store = inject<Ref<Module[]>>(MODULE_INJECTION_KEY, ref<Module[]>([]))
   const matched = computed(
     () => store.value.find(m => leading.value.path.startsWith(`/${m.id}`)),
   )

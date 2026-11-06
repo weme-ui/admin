@@ -15,7 +15,7 @@ export interface RuntimeContext {
   pinia: Pinia
   hooks: Hook<RuntimeHooks>
   modules: Ref<Module[]>
-  metas: Ref<ModuleMenuMeta[]>
+  meta: Ref<ModuleMenuMeta[]>
 }
 
 export interface RuntimeHooks {
@@ -62,9 +62,10 @@ export interface ModuleHandler {
 export type ModuleMenuType = 'group' | 'index' | 'page' | 'action'
 
 interface ModuleMenuFields {
-  module: string
   type: ModuleMenuType
+  module: string
   description?: string
+  tooltip?: string
   path?: string
   icon?: string
   activeIcon?: string
@@ -74,13 +75,13 @@ interface ModuleMenuFields {
 
 export interface ModuleMenu extends ModuleMenuFields {
   id: string
-  name: string
+  label: string
   children?: ModuleMenu[]
 }
 
 export type ModuleMenuDefinition = Partial<ModuleMenuFields> & {
   id: string
-  name: string
+  label: string
   children?: ModuleMenuDefinition[]
 }
 

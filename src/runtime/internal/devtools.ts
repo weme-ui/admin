@@ -1,9 +1,11 @@
 import type { App } from 'vue'
 import type { RuntimeContext } from '../types'
 import { setupDevtoolsPlugin } from '@vue/devtools-api'
+import packageJson from '../../../package.json' with { type: 'json' }
 
-const INSPECTOR_ID = 'weme-ui-admin'
-const componentStateTypes: string[] = []
+const PLUGIN_ID = 'weme-ui-admin'
+const PLUGIN_NAME = 'Weme UI Admin'
+const PLUGIN_LOGO = 'https://raw.githubusercontent.com/moujinet/assets/refs/heads/main/weme-ui/svg/circle-48.svg'
 
 /**
  * Register the Vue DevTools plugin
@@ -11,12 +13,14 @@ const componentStateTypes: string[] = []
  * @param app - The Vue application instance
  */
 export function registerDevToolsPlugin(app: App, ctx: RuntimeContext) {
+  const componentStateTypes: string[] = []
+
   setupDevtoolsPlugin({
-    id: 'weme-ui-admin',
-    label: 'Weme UI Admin',
-    logo: 'https://raw.githubusercontent.com/moujinet/assets/refs/heads/main/weme-ui/svg/circle-48.svg',
-    packageName: '@weme-ui/admin',
-    homepage: 'https://github.com/weme-ui/admin',
+    id: PLUGIN_ID,
+    label: PLUGIN_NAME,
+    logo: PLUGIN_LOGO,
+    packageName: packageJson.name,
+    homepage: packageJson.homepage,
     app,
     componentStateTypes,
   }, (api) => {
@@ -26,14 +30,14 @@ export function registerDevToolsPlugin(app: App, ctx: RuntimeContext) {
     }
 
     api.addInspector({
-      id: INSPECTOR_ID,
-      label: 'Weme UI Admin',
+      id: PLUGIN_ID,
+      label: PLUGIN_NAME,
       icon: 'storage',
       treeFilterPlaceholder: 'Search modules',
     })
 
     api.on.getInspectorTree((payload) => {
-      if (payload.app === app && payload.inspectorId === INSPECTOR_ID) {
+      if (payload.app === app && payload.inspectorId === PLUGIN_ID) {
         payload.rootNodes = ctx.modules.value.map(module => ({
           id: module.id,
           label: module.name,

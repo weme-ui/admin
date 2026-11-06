@@ -1,3 +1,4 @@
+import type { Ref } from 'vue'
 import type { ModuleMenu, ModuleMenuDefinition, ModuleMenuMeta, ModuleMenuType } from '../types'
 import { resolveDottedPath, sortByAsc } from './utils'
 
@@ -20,10 +21,11 @@ export function defineMenu(moduleId: string, definition: ModuleMenuDefinition, p
 
   const newMenu: ModuleMenu = {
     id: menuId,
-    module: moduleId,
     type: menuType,
-    name: definition.name,
+    module: moduleId,
+    label: definition.label,
     description: definition.description,
+    tooltip: definition.tooltip,
     icon: definition.icon,
     activeIcon: definition.activeIcon || definition.icon,
     path: menuPath,
@@ -60,7 +62,7 @@ export function updateMensMeta(metas: Ref<ModuleMenuMeta[]>, menus: ModuleMenu[]
     metas.value.push({
       id: menu.id,
       module: menu.module,
-      name: menu.name,
+      name: menu.label,
       description: menu.description,
       icon: menu.icon,
     })

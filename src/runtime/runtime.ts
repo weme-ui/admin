@@ -6,11 +6,11 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import { createApp, ref } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import { handleHotUpdate, routes } from 'vue-router/auto-routes'
-import { registerDevToolsPlugin } from './devtools/plugin'
+import { registerDevToolsPlugin } from './internal/devtools'
 import { Hook } from './internal/hook'
 import { loadExtensions, loadMiddlewares, loadModules } from './internal/loader'
 import { extendRoutesMeta } from './internal/meta'
-import { MODULES_INJECTION_KEY } from './module'
+import { MODULE_INJECTION_KEY } from './module'
 
 interface RuntimeOptions {
   /**
@@ -68,7 +68,7 @@ export function createRuntime(
       pinia,
       hooks,
       modules,
-      metas,
+      meta: metas,
     }
 
     loadExtensions(context)
@@ -91,7 +91,7 @@ export function createRuntime(
   (async () => {
     const ctx = await createVueApp()
 
-    ctx.app.provide(MODULES_INJECTION_KEY, ctx.modules)
+    ctx.app.provide(MODULE_INJECTION_KEY, ctx.modules)
     ctx.app.mount(rootContainer)
 
     await ctx.router.isReady()
