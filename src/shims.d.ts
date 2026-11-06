@@ -23,8 +23,8 @@ declare global {
   interface ImportMetaEnv {
     VITE_APP_NAME: string
     VITE_APP_STATE: string
-    VITE_ADMIN_URL: string
-    VITE_ADMIN_PORT: number
+    VITE_APP_URL: string
+    VITE_APP_PORT: number
   }
 }
 

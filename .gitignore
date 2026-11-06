@@ -21,3 +21,8 @@ dist
 
 # Weme
 .weme
+
+# Generated files
+auto-imports.d.ts
+components.d.ts
+typed-router.d.ts
