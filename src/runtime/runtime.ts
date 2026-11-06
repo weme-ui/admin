@@ -6,6 +6,7 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import { createApp, ref } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import { handleHotUpdate, routes } from 'vue-router/auto-routes'
+import { registerDevToolsPlugin } from './devtools/plugin'
 import { Hook } from './internal/hook'
 import { loadExtensions, loadMiddlewares, loadModules } from './internal/loader'
 import { extendRoutesMeta } from './internal/meta'
@@ -72,6 +73,10 @@ export function createRuntime(
 
     loadExtensions(context)
     loadMiddlewares(context)
+
+    if (import.meta.env.DEV) {
+      registerDevToolsPlugin(app, context)
+    }
 
     app
       .use(head)
