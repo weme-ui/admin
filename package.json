@@ -28,7 +28,9 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
+    "@iconify/vue": "^5.0.5",
     "@unhead/vue": "^3.4.3",
+    "motion-v": "^2.11.1",
     "pinia": "^4.1.0",
     "valibot": "^1.5.0",
     "vue": "^3.5.45",
@@ -36,6 +38,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^10.0.0",
+    "@iconify-json/mingcute": "^1.2.10",
     "@types/node": "^26.6.6",
     "@unocss/eslint-plugin": "^66.12.0",
     "@vitejs/devtools": "^0.8.2",
@@ -44,7 +47,7 @@
     "@vue/devtools-api": "^8.2.1",
     "@vueuse/core": "^15.0.0",
     "@weme-ui/schema": "^5.0.0",
-    "@weme-ui/unocss-preset": "^0.3.0",
+    "@weme-ui/unocss-preset": "^0.3.1",
     "clsx": "^2.1.1",
     "defu": "^6.1.7",
     "eslint": "^10.14.0",

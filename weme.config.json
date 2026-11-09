@@ -11,6 +11,22 @@
     "theme": "~/themes"
   },
   "registries": [
-    { "registry": "weme-ui/slim", "prefix": "ui" }
-  ]
+    {
+      "registry": "weme-ui/slim",
+      "prefix": "ui"
+    }
+  ],
+  "unocss": {
+    "cssVars": {
+      "activity-bar": {
+        "width": "3.5rem",
+        "active-bg": "neutral.3",
+        "active-color": "neutral.12"
+      },
+      "tooltip": {
+        "background": "neutral.12",
+        "color": "neutral.1"
+      }
+    }
+  }
 }

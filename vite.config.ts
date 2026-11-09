@@ -18,6 +18,17 @@ const plugins: PluginOption[] = [
   // https://github.com/vuejs/router
   VueRouter({
     dts: 'src/typed-router.d.ts',
+    routesFolder: [
+      'src/pages',
+      {
+        src: 'src/modules',
+        filePatterns: '**/pages/**/*',
+        path: (file) => {
+          const prefix = 'src/modules'
+          return `${file.slice(file.lastIndexOf(prefix) + prefix.length + 1).replace('/pages', '')}`
+        },
+      },
+    ],
   }),
 
   // https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue
@@ -142,8 +153,15 @@ export default defineConfig(({ mode }) => {
 
     optimizeDeps: {
       include: [
+        '@iconify/vue',
         '@vueuse/core',
+        '@weme-ui/unocss-preset/tokens',
+        'clsx',
+        'defu',
+        'motion-v',
         'reka-ui',
+        'tailwind-merge',
+        'tailwind-variants/config',
       ],
     },
 
