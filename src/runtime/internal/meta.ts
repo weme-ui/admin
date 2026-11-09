@@ -30,10 +30,11 @@ export function extendRoutesMeta(
 
       const path = resolveDottedPath(m.id)
 
-      return (route.path.startsWith('/') || (route.name && (route.name as string).startsWith('/')))
-        ? (path === route.name || path === route.path)
-        || `${path}/` === route.path
-        || `${path}/index` === route.path
+      return route.path.startsWith('/') || (route.name && (route.name as string).startsWith('/'))
+        ? path === route.name ||
+            path === route.path ||
+            `${path}/` === route.path ||
+            `${path}/index` === route.path
         : path === `${parent}/${route.path}`
     })
 
@@ -50,17 +51,13 @@ export function extendRoutesMeta(
 
     if (route.children && route.children.length > 0) {
       parent += (
-        route.path.startsWith('/') && route.path !== ''
-          ? route.path
-          : `/${route.path}`
+        route.path.startsWith('/') && route.path !== '' ? route.path : `/${route.path}`
       ).replace(/\/$/, '')
 
       route.children = extendRoutesMeta(route.children, metas, parent)
     }
 
-    parent = matched || (route.children && route.children.length > 0)
-      ? prev
-      : ''
+    parent = matched || (route.children && route.children.length > 0) ? prev : ''
 
     extendedRoutes.push(route)
   }

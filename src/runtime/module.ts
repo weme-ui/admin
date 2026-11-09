@@ -30,20 +30,19 @@ export function defineModule(id: string, definition: ModuleDefinition): ModuleHa
   }
 
   return (modules, metas, hooks) => {
-    if (modules.value.some(m => m.id === id)) {
+    if (modules.value.some((m) => m.id === id)) {
       throw new Error(`Module ${id} already defined`)
     }
 
     const menus: ModuleMenu[] = []
-    const definitionMenus = (definition.menus || []).sort(sortByAsc)
+    const definitionMenus = (definition.menus || []).toSorted(sortByAsc)
 
     definitionMenus.forEach((menu) => {
       menus.push(defineMenu(id, menu, id))
     })
 
-    const defaultMenuPath = definitionMenus.length > 0
-      ? getDeepestMenu(menus[0]).path
-      : definition.path
+    const defaultMenuPath =
+      definitionMenus.length > 0 ? getDeepestMenu(menus[0]).path : definition.path
 
     const newModule: Module = {
       id,
@@ -51,17 +50,14 @@ export function defineModule(id: string, definition: ModuleDefinition): ModuleHa
       description: definition.description,
       tooltip: definition.tooltip || definition.name,
       icon: definition.icon || DEFAULT_MODULE_ICON,
-      activeIcon: definition.activeIcon || definition.icon === DEFAULT_MODULE_ICON
-        ? DEFAULT_MODULE_ACTIVE_ICON
-        : definition.icon,
+      activeIcon:
+        definition.activeIcon || definition.icon === DEFAULT_MODULE_ICON
+          ? DEFAULT_MODULE_ACTIVE_ICON
+          : definition.icon,
       path: defaultMenuPath || '',
       sort: definition.sort || modules.value.length + 1,
-      hidden: definition.hidden === undefined
-        ? false
-        : definition.hidden,
-      menus: menus.length > 0
-        ? menus
-        : undefined,
+      hidden: definition.hidden === undefined ? false : definition.hidden,
+      menus: menus.length > 0 ? menus : undefined,
     }
 
     modules.value.push(newModule)
@@ -115,14 +111,10 @@ export function useModules(): UseModulesReturn {
 
   const leading = computed<RouteLocationMatched>(() => route.matched[0])
   const store = inject<Ref<Module[]>>(MODULE_INJECTION_KEY, ref<Module[]>([]))
-  const matched = computed(
-    () => store.value.find(m => leading.value.path.startsWith(`/${m.id}`)),
-  )
+  const matched = computed(() => store.value.find((m) => leading.value.path.startsWith(`/${m.id}`)))
 
   function findModule(...moduleIds: string[]): Module[] {
-    return store.value.filter(
-      m => moduleIds.includes(m.id),
-    ).sort(sortByAsc)
+    return store.value.filter((m) => moduleIds.includes(m.id)).toSorted(sortByAsc)
   }
 
   return {

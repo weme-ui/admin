@@ -5,73 +5,79 @@ import { SplitterGroup, SplitterPanel, SplitterResizeHandle } from 'reka-ui'
 
 const active = ref<string | undefined>('dashboard')
 
-const modules = computed(() => [
-  {
-    slot: 'content',
-    items: [
+const modules = computed(
+  () =>
+    [
       {
-        id: 'dashboard',
-        label: 'Dashboard',
-        tooltip: 'Go to dashboard',
-        icon: 'mingcute:home-1-line',
-        activeIcon: 'mingcute:home-1-fill',
+        slot: 'content',
+        items: [
+          {
+            id: 'dashboard',
+            label: 'Dashboard',
+            tooltip: 'Go to dashboard',
+            icon: 'mingcute:home-1-line',
+            activeIcon: 'mingcute:home-1-fill',
+          },
+          {
+            id: 'workspace',
+            label: 'Workspace',
+            tooltip: 'Go to workspace',
+            icon: 'mingcute:version-line',
+            activeIcon: 'mingcute:version-fill',
+          },
+        ],
       },
       {
-        id: 'workspace',
-        label: 'Workspace',
-        tooltip: 'Go to workspace',
-        icon: 'mingcute:version-line',
-        activeIcon: 'mingcute:version-fill',
+        slot: 'footer',
+        items: [
+          {
+            id: 'messages',
+            label: 'Messages',
+            icon: 'mingcute:message-2-line',
+            activeIcon: 'mingcute:message-2-fill',
+          },
+          {
+            id: 'settings',
+            label: 'Settings',
+            icon: 'mingcute:settings-1-line',
+            activeIcon: 'mingcute:settings-1-fill',
+          },
+        ],
       },
-    ],
-  },
-  {
-    slot: 'footer',
-    items: [
-      {
-        id: 'messages',
-        label: 'Messages',
-        icon: 'mingcute:message-2-line',
-        activeIcon: 'mingcute:message-2-fill',
-      },
-      {
-        id: 'settings',
-        label: 'Settings',
-        icon: 'mingcute:settings-1-line',
-        activeIcon: 'mingcute:settings-1-fill',
-      },
-    ],
-  },
-] satisfies ActivityBarGroup[])
+    ] satisfies ActivityBarGroup[],
+)
 
-const menus = computed(() => [
-  [
-    {
-      id: 'manage',
-      type: 'label',
-      label: 'Manage',
-      icon: 'mingcute:tool-line',
-      children: [
+const menus = computed(
+  () =>
+    [
+      [
         {
-          id: 'users',
-          type: 'link',
-          label: 'Users',
-          icon: 'mingcute:user-3-line',
-          to: '/users',
-          chip: true,
-        },
-        {
-          id: 'roles',
-          type: 'link',
-          label: 'Roles',
-          icon: 'mingcute:safe-lock-line',
-          to: '/roles',
-          chip: true,
+          id: 'manage',
+          type: 'label',
+          label: 'Manage',
+          icon: 'mingcute:tool-line',
+          children: [
+            {
+              id: 'users',
+              type: 'link',
+              label: 'Users',
+              icon: 'mingcute:user-3-line',
+              to: '/users',
+              chip: true,
+            },
+            {
+              id: 'roles',
+              type: 'link',
+              label: 'Roles',
+              icon: 'mingcute:safe-lock-line',
+              to: '/roles',
+              chip: true,
+            },
+          ],
         },
       ],
-    },
-  ],
-] satisfies NavigationMenuItem[][])
+    ] satisfies NavigationMenuItem[][],
+)
 </script>
 
 <template>
@@ -102,9 +108,7 @@ const menus = computed(() => [
 
     <SplitterResizeHandle class="w-2" />
 
-    <SplitterPanel id="content-view" class="py-2">
-      Content
-    </SplitterPanel>
+    <SplitterPanel id="content-view" class="py-2"> Content </SplitterPanel>
   </SplitterGroup>
 </template>
 

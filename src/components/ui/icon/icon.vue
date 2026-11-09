@@ -12,5 +12,10 @@ const resolvedIcon = computed(() => props.icon ?? props.name)
 </script>
 
 <template>
-  <Icon v-bind="delegated" data-slot="icon" :icon="resolvedIcon" :class="cn('outline-none shrink-0', props.class)" />
+  <Icon
+    v-bind="delegated"
+    data-slot="icon"
+    :icon="resolvedIcon"
+    :class="cn('outline-none shrink-0', props.class)"
+  />
 </template>

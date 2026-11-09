@@ -7,13 +7,13 @@ export const useFloatStyle = createVariants({
   variants: {
     placement: {
       'top-left': '',
-      'top': '',
+      top: '',
       'top-right': '',
-      'left': '',
-      'center': '',
-      'right': '',
+      left: '',
+      center: '',
+      right: '',
       'bottom-left': '',
-      'bottom': '',
+      bottom: '',
       'bottom-right': '',
     },
   },

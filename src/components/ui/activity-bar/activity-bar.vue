@@ -17,23 +17,19 @@ defineOptions({
 const props = withDefaults(defineProps<ActivityBarProps>(), { as: 'nav' })
 const emits = defineEmits<ActivityBarEmits>()
 
-const active = useVModel<ActivityBarProps, 'active', 'update:active'>(
-  props,
-  'active',
-  emits,
-  { defaultValue: props.defaultActive },
-)
+const active = useVModel<ActivityBarProps, 'active', 'update:active'>(props, 'active', emits, {
+  defaultValue: props.defaultActive,
+})
 
 const ui = useActivityBarStyle()
 const groups = toRef(() => props.groups)
 
-const contentGroups = computed(() => groups.value?.filter(group => group.slot === 'content'))
-const footerGroups = computed(() => groups.value?.filter(group => group.slot === 'footer'))
+const contentGroups = computed(() => groups.value?.filter((group) => group.slot === 'content'))
+const footerGroups = computed(() => groups.value?.filter((group) => group.slot === 'footer'))
 
-const [
-  DefineActivityBarItem,
-  ReuseActivityBarItem,
-] = createReusableTemplate<{ item: ActivityBarItem }>()
+const [DefineActivityBarItem, ReuseActivityBarItem] = createReusableTemplate<{
+  item: ActivityBarItem
+}>()
 
 async function handleActiveChange(item: ActivityBarItem) {
   if (item.disabled) {
@@ -53,7 +49,11 @@ useForwardExpose()
 
 <template>
   <DefineActivityBarItem v-slot="{ item }">
-    <Tooltip :content="active === item.id ? item.label : item.tooltip || item.label" side="right" as-child>
+    <Tooltip
+      :content="active === item.id ? item.label : item.tooltip || item.label"
+      side="right"
+      as-child
+    >
       <RovingFocusItem
         as="button"
         :aria-label="item.tooltip || item.label"
@@ -100,7 +100,10 @@ useForwardExpose()
       <slot name="content-bottom" />
     </div>
 
-    <footer v-if="footerGroups && footerGroups.length > 0" :class="cn(ui.footer(), props.ui?.footer)">
+    <footer
+      v-if="footerGroups && footerGroups.length > 0"
+      :class="cn(ui.footer(), props.ui?.footer)"
+    >
       <template v-for="(group, gIdx) in footerGroups" :key="`f-${gIdx}`">
         <RovingFocusGroup orientation="vertical" :class="cn(ui.group(), props.ui?.group)">
           <template v-for="(item, idx) in group.items" :key="`f-${gIdx}-${idx}`">

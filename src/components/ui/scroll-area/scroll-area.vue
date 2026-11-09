@@ -10,9 +10,8 @@ const props = withDefaults(defineProps<ScrollAreaProps>(), { type: 'hover' })
 const delegated = reactivePick(props, 'as', 'dir', 'type')
 
 const scrollHideDelay = computed(() =>
-  props.type !== 'scroll'
-    ? props.scrollHideDelay || 0
-    : props.scrollHideDelay || undefined)
+  props.type !== 'scroll' ? props.scrollHideDelay || 0 : props.scrollHideDelay || undefined,
+)
 
 const ui = useScrollAreaStyle()
 </script>
@@ -24,7 +23,10 @@ const ui = useScrollAreaStyle()
     :scroll-hide-delay="scrollHideDelay"
     :class="cn(ui.root(), props.ui?.root, props.class)"
   >
-    <ScrollAreaViewport data-slot="scroll-area-viewport" :class="cn(ui.viewport(), props.ui?.viewport)">
+    <ScrollAreaViewport
+      data-slot="scroll-area-viewport"
+      :class="cn(ui.viewport(), props.ui?.viewport)"
+    >
       <slot />
     </ScrollAreaViewport>
 

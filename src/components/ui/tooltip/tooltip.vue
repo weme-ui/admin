@@ -3,7 +3,14 @@ import type { TooltipContentProps } from 'reka-ui'
 import type { TooltipEmits, TooltipProps } from './tooltip.props'
 import { reactivePick } from '@vueuse/core'
 import { defu } from 'defu'
-import { TooltipArrow, TooltipContent, TooltipPortal, TooltipRoot, TooltipTrigger, useForwardPropsEmits } from 'reka-ui'
+import {
+  TooltipArrow,
+  TooltipContent,
+  TooltipPortal,
+  TooltipRoot,
+  TooltipTrigger,
+  useForwardPropsEmits,
+} from 'reka-ui'
 import { computed, toRef } from 'vue'
 import { toBoolValue } from '~/utils/props'
 import { cn } from '~/utils/styles'
@@ -18,12 +25,27 @@ const props = withDefaults(defineProps<TooltipProps>(), {
 })
 
 const emits = defineEmits<TooltipEmits>()
-const delegated = reactivePick(props, 'defaultOpen', 'open', 'disabled', 'delayDuration', 'disableHoverableContent', 'disableClosingTrigger', 'ignoreNonKeyboardFocus')
+const delegated = reactivePick(
+  props,
+  'defaultOpen',
+  'open',
+  'disabled',
+  'delayDuration',
+  'disableHoverableContent',
+  'disableClosingTrigger',
+  'ignoreNonKeyboardFocus',
+)
 const forwarded = useForwardPropsEmits(delegated, emits)
 
 const triggerProps = toRef(() => props.triggerProps)
 const portalProps = toRef(() => props.portalProps)
-const contentProps = toRef(() => defu(props.contentProps, { sideOffset: 6, collisionPadding: 6 }) as TooltipContentProps)
+const contentProps = toRef(
+  () =>
+    defu(props.contentProps, {
+      sideOffset: 6,
+      collisionPadding: 6,
+    }) as TooltipContentProps,
+)
 
 const side = computed(() => {
   if (props.side.includes('-')) {
@@ -34,21 +56,25 @@ const side = computed(() => {
 
 const align = computed(() => {
   if (props.side.includes('-')) {
-    return props.side.split('-')[1] === 'left'
-      ? 'start'
-      : 'end'
+    return props.side.split('-')[1] === 'left' ? 'start' : 'end'
   }
   return 'center'
 })
 
-const ui = computed(() => useTooltipStyle({
-  loading: toBoolValue(props.loading),
-}))
+const ui = computed(() =>
+  useTooltipStyle({
+    loading: toBoolValue(props.loading),
+  }),
+)
 </script>
 
 <template>
   <TooltipRoot v-slot="{ open }" v-bind="forwarded">
-    <TooltipTrigger v-bind="triggerProps" :as-child="asChild" :class="cn(ui.trigger(), props.ui?.trigger)">
+    <TooltipTrigger
+      v-bind="triggerProps"
+      :as-child="asChild"
+      :class="cn(ui.trigger(), props.ui?.trigger)"
+    >
       <slot :open="open" />
     </TooltipTrigger>
 

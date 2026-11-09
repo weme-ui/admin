@@ -6,8 +6,7 @@
  */
 export function resolveDottedPath(id: string): string {
   const parts: string[] = id.split('.')
-  if (parts[parts.length - 1] === 'index')
-    parts.pop()
+  if (parts[parts.length - 1] === 'index') parts.pop()
 
   return `/${parts.join('/')}`
 }

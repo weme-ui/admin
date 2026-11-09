@@ -9,7 +9,9 @@ import NavigationMenuItem from './navigation-menu-item.vue'
 import NavigationMenuList from './navigation-menu-list.vue'
 import { useNavigationMenuStyle } from './navigation-menu.style'
 
-const props = withDefaults(defineProps<NavigationMenuProps>(), { externalIcon: 'mingcute:external-link-line' })
+const props = withDefaults(defineProps<NavigationMenuProps>(), {
+  externalIcon: 'mingcute:external-link-line',
+})
 const emits = defineEmits<NavigationMenuEmits>()
 
 const active = useVModel<NavigationMenuProps, 'active', 'update:active'>(props, 'active', emits, {
@@ -21,7 +23,7 @@ const groups = computed(() => {
     return []
   }
 
-  if (Array.isArray(props.items) && props.items.every(item => Array.isArray(item))) {
+  if (Array.isArray(props.items) && props.items.every((item) => Array.isArray(item))) {
     return props.items
   }
 
@@ -52,15 +54,27 @@ function isActive(item: NavigationMenuItemType): boolean {
             :active="isActive(item)"
           >
             <template #icon>
-              <slot :name="`${item.id ? `icon-${item.id}` : 'icon'}`" :item="item" :active="active" />
+              <slot
+                :name="`${item.id ? `icon-${item.id}` : 'icon'}`"
+                :item="item"
+                :active="active"
+              />
             </template>
 
             <template #label>
-              <slot :name="`${item.id ? `label-${item.id}` : 'label'}`" :item="item" :active="active" />
+              <slot
+                :name="`${item.id ? `label-${item.id}` : 'label'}`"
+                :item="item"
+                :active="active"
+              />
             </template>
 
             <template #append>
-              <slot :name="`${item.id ? `append-${item.id}` : 'append'}`" :item="item" :active="active" />
+              <slot
+                :name="`${item.id ? `append-${item.id}` : 'append'}`"
+                :item="item"
+                :active="active"
+              />
             </template>
 
             <NavigationMenuList
@@ -75,15 +89,27 @@ function isActive(item: NavigationMenuItemType): boolean {
                 :active="isActive(child)"
               >
                 <template #icon>
-                  <slot :name="`${child.id ? `icon-${child.id}` : 'icon'}`" :item="child" :active="active" />
+                  <slot
+                    :name="`${child.id ? `icon-${child.id}` : 'icon'}`"
+                    :item="child"
+                    :active="active"
+                  />
                 </template>
 
                 <template #label>
-                  <slot :name="`${child.id ? `label-${child.id}` : 'label'}`" :item="child" :active="active" />
+                  <slot
+                    :name="`${child.id ? `label-${child.id}` : 'label'}`"
+                    :item="child"
+                    :active="active"
+                  />
                 </template>
 
                 <template #append>
-                  <slot :name="`${child.id ? `append-${child.id}` : 'append'}`" :item="child" :active="active" />
+                  <slot
+                    :name="`${child.id ? `append-${child.id}` : 'append'}`"
+                    :item="child"
+                    :active="active"
+                  />
                 </template>
 
                 <NavigationMenuList
@@ -99,15 +125,27 @@ function isActive(item: NavigationMenuItemType): boolean {
                     :active="isActive(child)"
                   >
                     <template #icon>
-                      <slot :name="`${sub.id ? `icon-${sub.id}` : 'icon'}`" :item="sub" :active="active" />
+                      <slot
+                        :name="`${sub.id ? `icon-${sub.id}` : 'icon'}`"
+                        :item="sub"
+                        :active="active"
+                      />
                     </template>
 
                     <template #label>
-                      <slot :name="`${sub.id ? `label-${sub.id}` : 'label'}`" :item="sub" :active="active" />
+                      <slot
+                        :name="`${sub.id ? `label-${sub.id}` : 'label'}`"
+                        :item="sub"
+                        :active="active"
+                      />
                     </template>
 
                     <template #append>
-                      <slot :name="`${sub.id ? `append-${sub.id}` : 'append'}`" :item="sub" :active="active" />
+                      <slot
+                        :name="`${sub.id ? `append-${sub.id}` : 'append'}`"
+                        :item="sub"
+                        :active="active"
+                      />
                     </template>
                   </NavigationMenuItem>
                 </NavigationMenuList>

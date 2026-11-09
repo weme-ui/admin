@@ -12,11 +12,13 @@ const props = withDefaults(defineProps<ChipProps>(), {
   size: 'md',
 })
 
-const ui = computed(() => useChipStyle({
-  variant: props.variant,
-  size: props.size,
-  animate: toBoolValue(props.animate),
-}))
+const ui = computed(() =>
+  useChipStyle({
+    variant: props.variant,
+    size: props.size,
+    animate: toBoolValue(props.animate),
+  }),
+)
 </script>
 
 <template>

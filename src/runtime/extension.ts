@@ -14,8 +14,7 @@ export function defineExtension(handler: ExtensionHandler): RuntimeCallback {
   return (ctx) => {
     try {
       handler(ctx)
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error)
     }
   }

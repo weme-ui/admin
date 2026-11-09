@@ -1,6 +1,6 @@
 import type { CustomThemeTokens } from '@weme-ui/unocss-preset/tokens'
 import type { ClassValue } from 'clsx'
-import type { TWMergeConfig, VariantProps } from 'tailwind-variants'
+import type { VariantProps } from 'tailwind-variants'
 import { isColorAlias, isCustomThemeToken } from '@weme-ui/unocss-preset/tokens'
 import { clsx } from 'clsx'
 import { extendTailwindMerge } from 'tailwind-merge'
@@ -8,9 +8,8 @@ import { createTV } from 'tailwind-variants/config'
 
 export { type VariantProps }
 
-export type ComponentProps<Props, Key extends string> = Props extends Record<string, any>
-  ? Props[Key]
-  : never
+export type ComponentProps<Props, Key extends string> =
+  Props extends Record<string, any> ? Props[Key] : never
 
 /** Any token after `fancy-` / `plain-` (e.g. `primary`, `amber-soft`). */
 function isSurfaceToken(value: string) {
@@ -20,10 +19,8 @@ function isSurfaceToken(value: string) {
 /** 颜色别名，含可选刻度 `accent` / `accent-4`（1–12） */
 function isColorAliasValue(value: string) {
   const [name, scale] = value.split('-')
-  if (!isColorAlias(name))
-    return false
-  if (scale === undefined)
-    return true
+  if (!isColorAlias(name)) return false
+  if (scale === undefined) return true
   const n = Number(scale)
   return Number.isInteger(n) && n >= 1 && n <= 12
 }
@@ -61,12 +58,12 @@ function isBorderSideOrAxis(value: string) {
  * `2.75` → `0.6875rem`，`12px` / `px` 等同理。
  * 默认 `theme.color` 是 `isAny`，这些值会先被当成 text-color，从而盖掉 `text-subtle`。
  */
-const UNO_TEXT_SIZE_RE = /^(-?\d*(?:\.\d+)?)(?:px|pt|pc|%|r?(?:em|ex|lh|cap|ch|ic)|(?:[sld]?v|cq)(?:[whib]|min|max)|in|cm|mm|rpx)?$/i
+const UNO_TEXT_SIZE_RE =
+  /^(-?\d*(?:\.\d+)?)(?:px|pt|pc|%|r?(?:em|ex|lh|cap|ch|ic)|(?:[sld]?v|cq)(?:[whib]|min|max)|in|cm|mm|rpx)?$/i
 const UNO_TEXT_UNIT_ONLY_RE = /^(?:px|[sld]?v[wh])$/i
 
 function isUnoTextSize(value: string) {
-  if (UNO_TEXT_UNIT_ONLY_RE.test(value))
-    return true
+  if (UNO_TEXT_UNIT_ONLY_RE.test(value)) return true
   const amount = UNO_TEXT_SIZE_RE.exec(value)?.[1]
   return !!amount && amount !== '-' && !Number.isNaN(Number(amount))
 }
@@ -77,9 +74,9 @@ function isUnoTextSize(value: string) {
  */
 function isBorderColor(value: string) {
   if (
-    /^\d+(?:\.\d+)?$/.test(value)
-    || BORDER_NON_COLOR_VALUES.has(value)
-    || isBorderSideOrAxis(value)
+    /^\d+(?:\.\d+)?$/.test(value) ||
+    BORDER_NON_COLOR_VALUES.has(value) ||
+    isBorderSideOrAxis(value)
   ) {
     return false
   }
@@ -103,41 +100,27 @@ const twMergeConfig = {
       text: [isUnoTextSize],
     },
     classGroups: {
-      'fancy': [
-        {
-          fancy: [isSurfaceToken],
-        },
-      ],
-      'plain': [
+      fancy: [{ fancy: [isSurfaceToken] }],
+      plain: [
         {
           plain: [isSurfaceToken],
         },
       ],
       'bg-color': [
         {
-          bg: [
-            isThemeColor('background'),
-          ],
+          bg: [isThemeColor('background')],
         },
       ],
       'text-color': [
         {
-          text: [
-            isThemeColor('foreground'),
-          ],
-          c: [
-            isThemeColor('foreground'),
-          ],
-          color: [
-            isThemeColor('foreground'),
-          ],
+          text: [isThemeColor('foreground')],
+          c: [isThemeColor('foreground')],
+          color: [isThemeColor('foreground')],
         },
       ],
       'border-color': [
         {
-          border: [
-            isThemeColor('border'),
-          ],
+          border: [isThemeColor('border')],
           b: [isBorderColor],
         },
       ],
@@ -153,7 +136,7 @@ const twMerge = extendTailwindMerge<'fancy' | 'plain'>(twMergeConfig)
 
 export const createVariants = createTV({
   twMerge: true,
-  twMergeConfig: twMergeConfig as TWMergeConfig,
+  twMergeConfig: twMergeConfig,
 })
 
 export function cn(...inputs: ClassValue[]) {

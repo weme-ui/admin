@@ -1,7 +1,5 @@
 <template>
-  <div>
-    Building
-  </div>
+  <div>Building</div>
 </template>
 
 <route lang="yaml">

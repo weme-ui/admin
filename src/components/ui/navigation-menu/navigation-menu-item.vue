@@ -34,9 +34,7 @@ const linkProps = computed(() => {
 
   return {
     to: props.to,
-    target: props.target ?? (isExternalLink()
-      ? '_blank'
-      : undefined),
+    target: props.target ?? (isExternalLink() ? '_blank' : undefined),
     rel: props.rel,
     hideExternalIcon: true,
     unstyled: true,
@@ -53,11 +51,11 @@ const badgeProps = computed(() => {
   }
 
   return item.badge && typeof item.badge === 'object'
-    ? {
+    ? ({
         size: 'sm',
         variant: active.value ? 'inverted' : 'soft',
         ...item.badge,
-      } as BadgeProps
+      } as BadgeProps)
     : undefined
 })
 
@@ -69,18 +67,20 @@ const chipProps = computed(() => {
   }
 
   return item.chip && typeof item.chip === 'object'
-    ? {
+    ? ({
         size: 'sm',
         ...item.chip,
-      } as ChipProps
+      } as ChipProps)
     : undefined
 })
 
-const ui = computed(() => useNavigationMenuItemStyle({
-  variant: props.variant,
-  type: props.type,
-  disabled: toBoolValue(props.disabled),
-}))
+const ui = computed(() =>
+  useNavigationMenuItemStyle({
+    variant: props.variant,
+    type: props.type,
+    disabled: toBoolValue(props.disabled),
+  }),
+)
 
 function isExternalLink(): boolean {
   return item.type === 'link' && typeof item.to === 'string' && item.to?.startsWith('http')
@@ -101,12 +101,7 @@ function isExternalLink(): boolean {
         :data-active="toBoolDataAttrValue(active)"
         :class="cn(ui.base(), props.ui?.base, props.class)"
       >
-        <slot
-          v-if="!!$slots.icon || !!icon"
-          name="icon"
-          :item="item"
-          :active="active"
-        >
+        <slot v-if="!!$slots.icon || !!icon" name="icon" :item="item" :active="active">
           <AnimatedToggleIcon
             v-if="type === 'link' && !!icon && !!activeIcon"
             :icon="icon"
@@ -130,7 +125,11 @@ function isExternalLink(): boolean {
           <slot name="append" :item="item" :active="active">
             <Chip v-if="chipProps" v-bind="chipProps" />
             <Badge v-else-if="badgeProps" v-bind="badgeProps" />
-            <Icon v-else-if="isExternalLink() && !!externalIcon" :name="externalIcon" class="text-muted size-4" />
+            <Icon
+              v-else-if="isExternalLink() && !!externalIcon"
+              :name="externalIcon"
+              class="text-muted size-4"
+            />
           </slot>
         </span>
       </Primitive>

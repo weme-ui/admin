@@ -13,9 +13,7 @@ export default mergeConfigs<Theme>([
   baseConfig,
   {
     theme: unoTheme,
-    transformers: [
-      transformerDirectives(),
-    ],
+    transformers: [transformerDirectives()],
     presets: [
       presetWemeUI({
         themes: [

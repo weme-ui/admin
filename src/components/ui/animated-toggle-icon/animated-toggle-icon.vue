@@ -30,7 +30,7 @@ const props = defineProps<AnimatedToggleIconProps>()
       :class="cn('shrink-0 pointer-events-none', props.class)"
       as-child
     >
-      <Icon :name="active ? (activeIcon || icon) : icon" />
+      <Icon :name="active ? activeIcon || icon : icon" />
     </Motion>
   </AnimatePresence>
 </template>

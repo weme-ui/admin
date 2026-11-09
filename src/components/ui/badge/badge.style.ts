@@ -31,7 +31,9 @@ export const useBadgeStyle = createVariants({
     },
     iconOnly: { true: {} },
     clickable: {
-      true: { root: 'cursor-pointer transition-colors duration-200 ease-out relative aria-[pressed=true]:scale-97' },
+      true: {
+        root: 'cursor-pointer transition-colors duration-200 ease-out relative aria-[pressed=true]:scale-97',
+      },
     },
   },
 
@@ -582,5 +584,5 @@ export const useBadgeStyle = createVariants({
   },
 })
 
-export type BadgeStyleSlots = typeof useBadgeStyle['slots']
+export type BadgeStyleSlots = (typeof useBadgeStyle)['slots']
 export type BadgeStyleProps = VariantProps<typeof useBadgeStyle>

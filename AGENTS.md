@@ -2,7 +2,7 @@
 
 ## Task Completion Requirements
 
-- All of `bun lint`, `bun lint:fix` and `bun typecheck` must pass before considering tasks completed.
+- All of `bun lint`, `bun lint:fix`, `bun typecheck` and `bun format` must pass before considering tasks completed.
 - NEVER run `bun test`. Always use `bun run test` (runs Vitest).
 
 ## Project
@@ -20,14 +20,6 @@ If a tradeoff is required, choose correctness and robustness over short-term con
 ## Maintainability
 
 Long term maintainability is a core priority. If you add new functionality, first check if there is shared logic that can be extracted to a separate module. Duplicate logic across multiple files is a code smell and should be avoided. Don't be afraid to change existing code. Don't take shortcuts by just adding local logic to solve a problem.
-
-## Package Roles
-
-- `apps/admin`: Vue/Vite Dashboard UI.
-- `apps/server`: Hono API backend with Drizzle ORM and PostgreSQL.
-- `apps/web`: Responsive public web client for parents, students, and prospects.
-- `apps/wxapp`: WeChat Mini Program client for share, discovery, and purchase flows in the WeChat ecosystem.
-- `packages/contracts`: Shared types, API shapes, and Zod schemas across apps.
 
 ## Honesty Rules
 
@@ -47,17 +39,6 @@ Before writing or editing code that uses a symbol, do at least one:
 4. If the claim depends on runtime behavior, run the relevant command.
 
 If verification is skipped, label the claim as unverified instead of presenting it as fact.
-
-## Database Schema
-
-Database schema changes **must** go through the root CLI only — do not bypass it:
-
-```bash
-bun run cli -- server db generate
-bun run cli -- server db migrate
-```
-
-Do not run DDL against PostgreSQL directly (e.g. `psql`, `docker exec … psql`, hand-written `ALTER TABLE`). Hand-written migration SQL files may live in `apps/server/migrations/`, but applying them to the database must use `db migrate`.
 
 ## Generate Text
 

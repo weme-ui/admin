@@ -31,11 +31,7 @@ interface RuntimeOptions {
  * @param options - The options
  * @returns The runtime context
  */
-export function createRuntime(
-  App: Component,
-  fn?: RuntimeCallback,
-  options?: RuntimeOptions,
-) {
+export function createRuntime(App: Component, fn?: RuntimeCallback, options?: RuntimeOptions) {
   const { rootContainer = '#app' } = options || {}
 
   async function createVueApp() {
@@ -51,7 +47,7 @@ export function createRuntime(
     // ⚠️ Must be loaded before routes are extended
     loadModules(modules, metas, hooks)
 
-    const sortedMetas = metas.value.sort((a, b) => a.id.localeCompare(b.id))
+    const sortedMetas = metas.value.toSorted((a, b) => a.id.localeCompare(b.id))
     const layoutRoutes = setupLayouts(routes)
     const extendedRoutes = extendRoutesMeta(layoutRoutes, sortedMetas)
 
@@ -78,17 +74,14 @@ export function createRuntime(
       registerDevToolsPlugin(app, context)
     }
 
-    app
-      .use(head)
-      .use(pinia)
-      .use(router)
+    app.use(head).use(pinia).use(router)
 
     await fn?.(context)
 
     return context
   }
 
-  (async () => {
+  ;(async () => {
     const ctx = await createVueApp()
 
     ctx.app.provide(MODULE_INJECTION_KEY, ctx.modules)

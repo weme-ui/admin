@@ -12,7 +12,11 @@ import { resolveDottedPath, sortByAsc } from './utils'
  * @param parentId - The parent menu id
  * @returns The menu
  */
-export function defineMenu(moduleId: string, definition: ModuleMenuDefinition, parentId?: string): ModuleMenu {
+export function defineMenu(
+  moduleId: string,
+  definition: ModuleMenuDefinition,
+  parentId?: string,
+): ModuleMenu {
   const menuId = resolveMenuId(definition.id, parentId)
   const menuType = resolveMenuType(definition.id, definition.children)
   const menuPath = ['index', 'page', 'group'].includes(menuType)
@@ -30,18 +34,14 @@ export function defineMenu(moduleId: string, definition: ModuleMenuDefinition, p
     activeIcon: definition.activeIcon || definition.icon,
     path: menuPath,
     sort: definition.sort || 0,
-    hidden: definition.hidden === undefined
-      ? false
-      : definition.hidden,
+    hidden: definition.hidden === undefined ? false : definition.hidden,
   }
 
   if (definition.children && definition.children.length > 0) {
-    definition.children
-      .sort(sortByAsc)
-      .forEach((child) => {
-        newMenu.children = newMenu.children || []
-        newMenu.children.push(defineMenu(moduleId, child, menuId))
-      })
+    definition.children.toSorted(sortByAsc).forEach((child) => {
+      newMenu.children = newMenu.children || []
+      newMenu.children.push(defineMenu(moduleId, child, menuId))
+    })
 
     newMenu.path = getDeepestMenu(newMenu).path
   }
@@ -86,15 +86,13 @@ export function getDeepestMenu(menu: ModuleMenu): ModuleMenu {
     return menu
   }
 
-  const availableFilter = (m: ModuleMenu) => m.hidden !== true && ['index', 'page'].includes(m.type)
+  const availableFilter = (m: ModuleMenu) => !m.hidden && ['index', 'page'].includes(m.type)
   const hasChildren = menu.children.some(availableFilter)
 
   if (hasChildren) {
     const availableChildren = menu.children
       .filter(availableFilter)
-      .sort(a => a.type === 'index'
-        ? -1
-        : 1)
+      .toSorted((a) => (a.type === 'index' ? -1 : 1))
     return getDeepestMenu(availableChildren[0])
   }
 
@@ -113,9 +111,7 @@ export function getDeepestMenu(menu: ModuleMenu): ModuleMenu {
  * @returns The resolved menu id
  */
 function resolveMenuId(menuId: string, parentId?: string): string {
-  return (parentId
-    ? `${parentId}.${menuId}`
-    : menuId).replace(/#/, '')
+  return (parentId ? `${parentId}.${menuId}` : menuId).replace(/#/, '')
 }
 
 /**
@@ -132,14 +128,12 @@ function resolveMenuId(menuId: string, parentId?: string): string {
 function resolveMenuType(menuId: string, children?: ModuleMenuDefinition[]): ModuleMenuType {
   if (menuId === 'index') {
     return 'index'
-  }
-  else if (menuId.startsWith('#')) {
+  } else if (menuId.startsWith('#')) {
     return 'action'
-  }
-  else if (children && children.length > 0) {
+  } else if (children && children.length > 0) {
     if (
-      children.some(child => child.id === 'index')
-      || children.filter(child => child.id.startsWith('#')).length === children.length
+      children.some((child) => child.id === 'index') ||
+      children.filter((child) => child.id.startsWith('#')).length === children.length
     ) {
       return 'page'
     }
@@ -161,7 +155,5 @@ function resolveMenuType(menuId: string, children?: ModuleMenuDefinition[]): Mod
  * @returns The resolved menu path
  */
 function resolveMenuPath(menuId: string): string {
-  return menuId.includes('.')
-    ? resolveDottedPath(menuId)
-    : ''
+  return menuId.includes('.') ? resolveDottedPath(menuId) : ''
 }

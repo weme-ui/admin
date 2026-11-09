@@ -9,7 +9,8 @@ export const useNavigationMenuStyle = createVariants({
     label: 'text-xs text-muted px-2 py-1 cursor-default select-none uppercase',
     labelIcon: 'size-3',
     link: 'group text-sm px-3 py-1.5 rounded-md transition-colors data-[active]:(text-highlighted font-medium bg-muted) not-[data-active]:text-foreground hover:not-[data-active]:(text-highlighted bg-muted/50)',
-    linkIcon: 'size-4 group-data-[active]:text-highlighted group-not-[[data-active]]:text-subtle group-not-[[data-active]]:group-hover:text-foreground',
+    linkIcon:
+      'size-4 group-data-[active]:text-highlighted group-not-[[data-active]]:text-subtle group-not-[[data-active]]:group-hover:text-foreground',
     append: 'ml-auto flex flex-center',
     subList: 'pl-6 flex flex-col gap-1',
     subLabel: 'group text-sm text-foreground px-3 py-1.5',
@@ -25,4 +26,4 @@ export const useNavigationMenuStyle = createVariants({
   ],
 })
 
-export type NavigationMenuStyleSlots = typeof useNavigationMenuStyle['slots']
+export type NavigationMenuStyleSlots = (typeof useNavigationMenuStyle)['slots']

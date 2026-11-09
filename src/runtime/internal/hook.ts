@@ -1,7 +1,9 @@
 export type HookHandler = (...args: any) => Promise<void> | void
 export type HookNames<T> = keyof T & string
 
-export interface Hooks { [key: string]: HookHandler }
+export interface Hooks {
+  [key: string]: HookHandler
+}
 
 type InferHandler<T, NameT extends keyof T> = T[NameT] extends HookHandler ? T[NameT] : never
 
@@ -35,10 +37,10 @@ export class Hook<
   HooksT extends Record<string, any> = Record<string, HookHandler>,
   HookNameT extends HookNames<HooksT> = HookNames<HooksT>,
 > {
-  protected _hooks: { [key: string]: HookHandler[] | undefined } = {}
+  protected hooks: { [key: string]: HookHandler[] | undefined } = {}
 
   constructor() {
-    this._hooks = {}
+    this.hooks = {}
   }
 
   /**
@@ -53,8 +55,8 @@ export class Hook<
       return () => {}
     }
 
-    this._hooks[name] = this._hooks[name] ?? []
-    this._hooks[name].push(fn)
+    this.hooks[name] = this.hooks[name] ?? []
+    this.hooks[name].push(fn)
 
     return () => {
       if (fn) {
@@ -72,7 +74,7 @@ export class Hook<
    * @param fn - The function to remove
    */
   removeHook<NameT extends HookNameT>(name: NameT, fn: InferHandler<HooksT, NameT>): void {
-    const hooks = this._hooks[name]
+    const hooks = this.hooks[name]
 
     if (hooks) {
       const index = hooks.indexOf(fn)
@@ -82,7 +84,7 @@ export class Hook<
       }
 
       if (hooks.length === 0) {
-        this._hooks[name] = undefined
+        this.hooks[name] = undefined
       }
     }
   }
@@ -94,8 +96,11 @@ export class Hook<
    * @param args - The arguments to pass to the hook
    * @returns The result of the hook
    */
-  callHook<NameT extends HookNameT>(name: NameT, ...args: Parameters<InferHandler<HooksT, NameT>>): Promise<any> | void {
-    const hooks = this._hooks[name]
+  callHook<NameT extends HookNameT>(
+    name: NameT,
+    ...args: Parameters<InferHandler<HooksT, NameT>>
+  ): Promise<any> | void {
+    const hooks = this.hooks[name]
 
     if (!hooks || hooks.length === 0) {
       return
@@ -108,8 +113,7 @@ export class Hook<
         if (result && typeof (result as any).then === 'function') {
           return Promise.resolve(result)
         }
-      }
-      catch (error) {
+      } catch (error) {
         return Promise.reject(error)
       }
     }

@@ -11,12 +11,27 @@ export const useChipStyle = createVariants({
 
   variants: {
     variant: {
-      default: { indicatorWrapper: 'before:bg-inverted/50', indicator: 'bg-inverted' },
-      accent: { indicatorWrapper: 'before:bg-accent/50', indicator: 'bg-accent' },
-      neutral: { indicatorWrapper: 'before:bg-neutral/50', indicator: 'bg-neutral' },
+      default: {
+        indicatorWrapper: 'before:bg-inverted/50',
+        indicator: 'bg-inverted',
+      },
+      accent: {
+        indicatorWrapper: 'before:bg-accent/50',
+        indicator: 'bg-accent',
+      },
+      neutral: {
+        indicatorWrapper: 'before:bg-neutral/50',
+        indicator: 'bg-neutral',
+      },
       info: { indicatorWrapper: 'before:bg-info/50', indicator: 'bg-info' },
-      success: { indicatorWrapper: 'before:bg-success/50', indicator: 'bg-success' },
-      warning: { indicatorWrapper: 'before:bg-warning/50', indicator: 'bg-warning' },
+      success: {
+        indicatorWrapper: 'before:bg-success/50',
+        indicator: 'bg-success',
+      },
+      warning: {
+        indicatorWrapper: 'before:bg-warning/50',
+        indicator: 'bg-warning',
+      },
       error: { indicatorWrapper: 'before:bg-error/50', indicator: 'bg-error' },
     },
     size: {
@@ -26,7 +41,8 @@ export const useChipStyle = createVariants({
     },
     animate: {
       true: {
-        indicatorWrapper: 'relative before:(rounded-full block content-[""] inset-0 abs animate-ping)',
+        indicatorWrapper:
+          'relative before:(rounded-full block content-[""] inset-0 abs animate-ping)',
       },
     },
   },
@@ -37,5 +53,5 @@ export const useChipStyle = createVariants({
   },
 })
 
-export type ChipStyleSlots = typeof useChipStyle['slots']
+export type ChipStyleSlots = (typeof useChipStyle)['slots']
 export type ChipStyleProps = VariantProps<typeof useChipStyle>

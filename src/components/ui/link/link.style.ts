@@ -71,5 +71,5 @@ export const useLinkStyle = createVariants({
   },
 })
 
-export type LinkStyleSlots = typeof useLinkStyle['slots']
+export type LinkStyleSlots = (typeof useLinkStyle)['slots']
 export type LinkStyleProps = VariantProps<typeof useLinkStyle>

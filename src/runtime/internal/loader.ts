@@ -1,5 +1,12 @@
 import type { Ref } from 'vue'
-import type { Module, ModuleHandler, ModuleMenuMeta, RuntimeCallback, RuntimeContext, RuntimeHooks } from '../types'
+import type {
+  Module,
+  ModuleHandler,
+  ModuleMenuMeta,
+  RuntimeCallback,
+  RuntimeContext,
+  RuntimeHooks,
+} from '../types'
 import type { Hook } from './hook'
 
 // ============================================================================
@@ -15,7 +22,11 @@ import type { Hook } from './hook'
  * @param metas - The metas
  * @param hooks - The hooks
  */
-export function loadModules(modules: Ref<Module[]>, metas: Ref<ModuleMenuMeta[]>, hooks: Hook<RuntimeHooks>) {
+export function loadModules(
+  modules: Ref<Module[]>,
+  metas: Ref<ModuleMenuMeta[]>,
+  hooks: Hook<RuntimeHooks>,
+) {
   const configs = import.meta.glob<ModuleHandler>('~/modules/**/module.config.ts', {
     eager: true,
     import: 'default',

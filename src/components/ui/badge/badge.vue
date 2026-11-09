@@ -16,16 +16,20 @@ const props = withDefaults(defineProps<BadgeProps>(), {
 
 const slots = useSlots()
 
-const iconOnly = computed(() => (!!slots.icon || !!props.icon) && !(!!props.label || !!slots.default))
+const iconOnly = computed(
+  () => (!!slots.icon || !!props.icon) && !(!!props.label || !!slots.default),
+)
 const clickable = computed(() => !!props.clickable || !!props.href)
 
-const ui = computed(() => useBadgeStyle({
-  variant: props.variant,
-  color: props.color,
-  size: props.size,
-  clickable: clickable.value,
-  iconOnly: iconOnly.value,
-}))
+const ui = computed(() =>
+  useBadgeStyle({
+    variant: props.variant,
+    color: props.color,
+    size: props.size,
+    clickable: clickable.value,
+    iconOnly: iconOnly.value,
+  }),
+)
 
 const pressed = ref(false)
 </script>

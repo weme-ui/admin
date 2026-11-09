@@ -14,16 +14,10 @@ export const useActivityBarStyle = createVariants({
 
   compoundSlots: [
     {
-      slots: [
-        'root',
-        'header',
-        'content',
-        'footer',
-        'group',
-      ],
+      slots: ['root', 'header', 'content', 'footer', 'group'],
       class: 'flex flex-col',
     },
   ],
 })
 
-export type ActivityBarStyleSlots = typeof useActivityBarStyle['slots']
+export type ActivityBarStyleSlots = (typeof useActivityBarStyle)['slots']

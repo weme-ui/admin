@@ -18,35 +18,58 @@ const props = withDefaults(defineProps<LinkProps>(), {
   externalIcon: 'ri:external-link-line',
 })
 
-const delegated = reactiveOmit(props, 'label', 'prefixIcon', 'suffixIcon', 'externalIcon', 'color', 'unstyled', 'hideExternalIcon', 'class', 'ui')
+const delegated = reactiveOmit(
+  props,
+  'label',
+  'prefixIcon',
+  'suffixIcon',
+  'externalIcon',
+  'color',
+  'unstyled',
+  'hideExternalIcon',
+  'class',
+  'ui',
+)
 
-const isExternal = computed(() => typeof props.to === 'string' && (props.to.startsWith('http') || props.to.startsWith('://')))
+const isExternal = computed(
+  () => typeof props.to === 'string' && (props.to.startsWith('http') || props.to.startsWith('://')),
+)
 
-const ui = computed(() => useLinkStyle({
-  color: props.color,
-  unstyled: toBoolValue(props.unstyled),
-  external: isExternal.value && !props.suffixIcon,
-}))
+const ui = computed(() =>
+  useLinkStyle({
+    color: props.color,
+    unstyled: toBoolValue(props.unstyled),
+    external: isExternal.value && !props.suffixIcon,
+  }),
+)
 </script>
 
 <template>
-  <RouterLink
-    v-slot="{ href, navigate }"
-    v-bind="delegated"
-    custom
-  >
+  <RouterLink v-slot="{ href, navigate }" v-bind="delegated" custom>
     <a
       v-bind="$attrs"
       data-slot="link"
       :class="cn(ui.root(), props.ui?.root, props.class)"
       :href="isExternal ? String(to) : href"
-      @click="(e) => isExternal ? undefined : navigate(e)"
+      @click="(e) => (isExternal ? undefined : navigate(e))"
     >
-      <Icon v-if="prefixIcon" :name="prefixIcon" :class="cn(ui.prefixIcon(), props.ui?.prefixIcon)" />
+      <Icon
+        v-if="prefixIcon"
+        :name="prefixIcon"
+        :class="cn(ui.prefixIcon(), props.ui?.prefixIcon)"
+      />
       <slot>{{ label }}</slot>
       <template v-if="!hideExternalIcon">
-        <Icon v-if="isExternal" :name="externalIcon" :class="cn(ui.suffixIcon(), props.ui?.suffixIcon)" />
-        <Icon v-else-if="suffixIcon" :name="suffixIcon" :class="cn(ui.suffixIcon(), props.ui?.suffixIcon)" />
+        <Icon
+          v-if="isExternal"
+          :name="externalIcon"
+          :class="cn(ui.suffixIcon(), props.ui?.suffixIcon)"
+        />
+        <Icon
+          v-else-if="suffixIcon"
+          :name="suffixIcon"
+          :class="cn(ui.suffixIcon(), props.ui?.suffixIcon)"
+        />
       </template>
     </a>
   </RouterLink>

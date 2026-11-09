@@ -29,9 +29,7 @@ export function toBoolValue(value: any) {
  * @returns 布尔数据属性值
  */
 export function toBoolDataAttrValue(value: any) {
-  return toBoolValue(value)
-    ? ''
-    : undefined
+  return toBoolValue(value) ? '' : undefined
 }
 
 /**
@@ -55,9 +53,7 @@ export function isBoolDataAttrValue(value: unknown) {
  * @returns 布尔 aria 值
  */
 export function toBoolAriaValue(value: any) {
-  return toBoolValue(value)
-    ? true
-    : undefined
+  return toBoolValue(value) ? true : undefined
 }
 
 /**
@@ -70,12 +66,7 @@ export function toBoolAriaValue(value: any) {
  * @returns 合并后的引用
  */
 export function mergeToRef<T>(props: T | undefined | boolean, defaults: T) {
-  return toRef(() => defu(
-    typeof props === 'object'
-      ? props
-      : {},
-    defaults as any,
-  ) as T)
+  return toRef(() => defu(typeof props === 'object' ? props : {}, defaults as any) as T)
 }
 
 /**
@@ -96,9 +87,7 @@ export function pick(
   if (typeof path === 'string') {
     path = path.split('.').map((key) => {
       const numKey = Number(key)
-      return Number.isNaN(numKey)
-        ? key
-        : numKey
+      return Number.isNaN(numKey) ? key : numKey
     })
   }
 
@@ -112,9 +101,7 @@ export function pick(
     result = result[key]
   }
 
-  return result !== undefined
-    ? result
-    : defaultValue
+  return result !== undefined ? result : defaultValue
 }
 
 /**
@@ -127,19 +114,21 @@ export function pick(
  */
 export function getChildrenSlots(children?: VNode[]) {
   if (children?.length) {
-    children = children.flatMap((child: any) => {
-      if (isVNode(child) && child.type === Comment) {
-        // eslint-disable-next-line array-callback-return
-        return
-      }
-      if (isVNode(child) && child.type === Fragment) {
-        return child.children
-      }
-      if (isVNode(child) && child.type === 'template') {
-        return child.children
-      }
-      return child
-    }).filter(Boolean)
+    children = children
+      .flatMap((child: any) => {
+        if (isVNode(child) && child.type === Comment) {
+          // eslint-disable-next-line array-callback-return
+          return
+        }
+        if (isVNode(child) && child.type === Fragment) {
+          return child.children
+        }
+        if (isVNode(child) && child.type === 'template') {
+          return child.children
+        }
+        return child
+      })
+      .filter(Boolean)
   }
 
   return children || []

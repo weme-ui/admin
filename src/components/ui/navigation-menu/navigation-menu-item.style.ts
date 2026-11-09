@@ -63,5 +63,5 @@ export const useNavigationMenuItemStyle = createVariants({
   },
 })
 
-export type NavigationMenuItemStyleSlots = typeof useNavigationMenuItemStyle['slots']
+export type NavigationMenuItemStyleSlots = (typeof useNavigationMenuItemStyle)['slots']
 export type NavigationMenuItemStyleProps = VariantProps<typeof useNavigationMenuItemStyle>
