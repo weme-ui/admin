@@ -17,7 +17,6 @@
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
 
-  // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.oxc": "always"
   },

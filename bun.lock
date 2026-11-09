@@ -22,8 +22,8 @@
         "@vitejs/plugin-vue-jsx": "^5.1.6",
         "@vue/devtools-api": "^8.2.1",
         "@vueuse/core": "^15.0.0",
-        "@weme-ui/schema": "^5.0.0",
-        "@weme-ui/unocss-preset": "^0.3.1",
+        "@weme-ui/schema": "^5.0.1",
+        "@weme-ui/unocss-preset": "^0.3.2",
         "clsx": "^2.1.1",
         "defu": "^6.1.7",
         "lint-staged": "^17.6.0",
@@ -463,9 +463,9 @@
 
     "@vueuse/shared": ["@vueuse/shared@15.0.0", "", { "peerDependencies": { "vue": "^3.5.0" } }, "sha512-vbNXhGrbV53xPOMSyOzMHQRvhMgZf7oNDw2RChUetVxwTIEkInQ1joZ9JbT0G3z2n2AJNjvmCWeM9ySYrnvogA=="],
 
-    "@weme-ui/schema": ["@weme-ui/schema@5.0.0", "", { "peerDependencies": { "valibot": "^1.5.0" } }, "sha512-fN2RQd+tv2AWqPpGtjZZlqb60ceVzQ2QxV+8j+aJbgt0Xv87AMrvlHUU5SJm73kIk9kKUu8ZX+tbkhImcsoIdA=="],
+    "@weme-ui/schema": ["@weme-ui/schema@5.0.1", "", { "peerDependencies": { "valibot": "^1.5.0" } }, "sha512-APiHaRg1lKI+EAuaIxIMeXUwQ0co+xhaivYsuDDc3GSMi0ZyjHM/lOIisLKsFl+kqa+E85KyQdzgYJDevfUTzw=="],
 
-    "@weme-ui/unocss-preset": ["@weme-ui/unocss-preset@0.3.1", "", { "dependencies": { "@unocss/core": "66.10.5", "@unocss/extractor-arbitrary-variants": "66.10.5", "@unocss/rule-utils": "66.10.5", "@unocss/transformer-variant-group": "66.10.5", "bezier-easing": "^3.2.0", "colorjs.io": "^0.7.1", "defu": "^6.1.7" }, "peerDependencies": { "@radix-ui/colors": "^3.0.0", "unocss": "^66.10.5" } }, "sha512-xUzKjVzTdp2+4MNu4DxCeTBRg+WjFyUHkCxHsnRgEY+OH3aTnLet91eNbsKm1q+xwBc6fpkPWkpjFGKyBvdXPQ=="],
+    "@weme-ui/unocss-preset": ["@weme-ui/unocss-preset@0.3.2", "", { "dependencies": { "@unocss/core": "66.10.5", "@unocss/extractor-arbitrary-variants": "66.10.5", "@unocss/rule-utils": "66.10.5", "@unocss/transformer-variant-group": "66.10.5", "bezier-easing": "^3.2.0", "colorjs.io": "^0.7.1", "defu": "^6.1.7" }, "peerDependencies": { "@radix-ui/colors": "^3.0.0", "unocss": "^66.10.5" } }, "sha512-FstiVSX9xrH1XjeaZyLirUuRFGc0Wwfg9jxMUXMsGx+VqcGj4Brl0txoiLEzpf+bbpjiZQQmFLxMK6xe+XTfdQ=="],
 
     "acorn": ["acorn@8.19.0", "", { "bin": { "acorn": "bin/acorn" } }, "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw=="],
 
