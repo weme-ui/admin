@@ -10,6 +10,7 @@ export const useLinkStyle = createVariants({
 
   variants: {
     color: {
+      default: {},
       accent: {},
       neutral: {},
       info: {},
@@ -33,39 +34,44 @@ export const useLinkStyle = createVariants({
 
   compoundVariants: [
     {
+      color: 'default',
+      unstyled: false,
+      class: { root: 'text-default hover:text-highlighted' },
+    },
+    {
       color: 'accent',
       unstyled: false,
-      class: { root: 'fancy-accent-plain' },
+      class: { root: 'anchor-accent' },
     },
     {
       color: 'neutral',
       unstyled: false,
-      class: { root: 'fancy-neutral-plain' },
+      class: { root: 'anchor-neutral' },
     },
     {
       color: 'info',
       unstyled: false,
-      class: { root: 'fancy-info-plain' },
+      class: { root: 'anchor-info' },
     },
     {
       color: 'success',
       unstyled: false,
-      class: { root: 'fancy-success-plain' },
+      class: { root: 'anchor-success' },
     },
     {
       color: 'warning',
       unstyled: false,
-      class: { root: 'fancy-warning-plain' },
+      class: { root: 'anchor-warning' },
     },
     {
       color: 'error',
       unstyled: false,
-      class: { root: 'fancy-error-plain' },
+      class: { root: 'anchor-error' },
     },
   ],
 
   defaultVariants: {
-    color: 'accent',
+    color: 'default',
     unstyled: false,
     external: false,
   },

@@ -2,7 +2,7 @@ import type { VariantProps } from '~/utils/styles'
 import { createVariants } from '~/utils/styles'
 
 export const useFloatStyle = createVariants({
-  base: 'flex size-fit flex-center abs',
+  base: 'flex size-fit flex-center absolute',
 
   variants: {
     placement: {

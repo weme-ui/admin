@@ -421,6 +421,62 @@
           "dest": "src/components/ui/scroll-area/README.md"
         }
       ]
+    },
+    {
+      "name": "icon",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/icon/icon.vue",
+          "dest": "src/components/ui/icon/icon.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/icon/icon.props.ts",
+          "dest": "src/components/ui/icon/icon.props.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/icon/README.md",
+          "dest": "src/components/ui/icon/README.md"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/button/button.vue",
+          "dest": "src/components/ui/button/button.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/button/button.props.ts",
+          "dest": "src/components/ui/button/button.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/button/button.style.ts",
+          "dest": "src/components/ui/button/button.style.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/button/button.uno.ts",
+          "dest": "src/components/ui/button/button.uno.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/button/README.md",
+          "dest": "src/components/ui/button/README.md"
+        }
+      ]
     }
   ]
 }

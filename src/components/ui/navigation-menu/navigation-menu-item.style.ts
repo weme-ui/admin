@@ -22,11 +22,11 @@ export const useNavigationMenuItemStyle = createVariants({
     type: {
       label: {},
       link: {
-        base: 'text-sm px-3 py-1.5 rounded-md transition-colors data-[active]:(text-highlighted font-medium bg-muted) not-[data-active]:text-foreground hover:not-[data-active]:(text-highlighted bg-muted/50)',
-        icon: 'size-4 group-data-[active]:text-highlighted group-not-[[data-active]]:text-subtle group-not-[[data-active]]:group-hover:text-foreground',
+        base: 'text-sm px-3 py-1.5 rounded-md transition-colors data-[active]:(text-highlighted font-medium bg-muted) not-[data-active]:text-default hover:not-[data-active]:(text-highlighted bg-muted/50)',
+        icon: 'size-4 group-data-[active]:text-highlighted group-not-[[data-active]]:text-subtle group-not-[[data-active]]:group-hover:text-default',
       },
       separator: {
-        root: 'my-2 b-b b-base h-px',
+        root: 'my-2 b-b b-default h-px',
       },
     },
     disabled: {
@@ -46,7 +46,7 @@ export const useNavigationMenuItemStyle = createVariants({
       variant: 'default',
       type: 'label',
       class: {
-        base: 'text-sm px-3 py-1.5 text-foreground',
+        base: 'text-sm px-3 py-1.5 text-default',
         icon: 'text-subtle',
       },
     },

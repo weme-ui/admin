@@ -5,34 +5,19 @@ export const useChipStyle = createVariants({
   slots: {
     root: 'flex-inline flex-y-center',
     indicatorWrapper: 'pointer-events-none',
-    indicator: 'rounded-full block ring ring-$background-base',
+    indicator: 'rounded-full block ring ring-bg',
     label: 'leading-none font-medium ml-sm select-none whitespace-nowrap text-nowrap',
   },
 
   variants: {
     variant: {
-      default: {
-        indicatorWrapper: 'before:bg-inverted/50',
-        indicator: 'bg-inverted',
-      },
-      accent: {
-        indicatorWrapper: 'before:bg-accent/50',
-        indicator: 'bg-accent',
-      },
-      neutral: {
-        indicatorWrapper: 'before:bg-neutral/50',
-        indicator: 'bg-neutral',
-      },
-      info: { indicatorWrapper: 'before:bg-info/50', indicator: 'bg-info' },
-      success: {
-        indicatorWrapper: 'before:bg-success/50',
-        indicator: 'bg-success',
-      },
-      warning: {
-        indicatorWrapper: 'before:bg-warning/50',
-        indicator: 'bg-warning',
-      },
-      error: { indicatorWrapper: 'before:bg-error/50', indicator: 'bg-error' },
+      default: { indicatorWrapper: 'before:bg-inverted/60', indicator: 'bg-inverted' },
+      accent: { indicatorWrapper: 'before:bg-accent/60', indicator: 'bg-accent' },
+      neutral: { indicatorWrapper: 'before:bg-neutral/60', indicator: 'bg-neutral' },
+      info: { indicatorWrapper: 'before:bg-info/60', indicator: 'bg-info' },
+      success: { indicatorWrapper: 'before:bg-success/60', indicator: 'bg-success' },
+      warning: { indicatorWrapper: 'before:bg-warning/60', indicator: 'bg-warning' },
+      error: { indicatorWrapper: 'before:bg-error/60', indicator: 'bg-error' },
     },
     size: {
       sm: { indicator: 'size-1.5', label: 'text-xs' },
@@ -42,7 +27,7 @@ export const useChipStyle = createVariants({
     animate: {
       true: {
         indicatorWrapper:
-          'relative before:(rounded-full block content-[""] inset-0 abs animate-ping)',
+          'relative before:(rounded-full block content-[""] inset-0 absolute animate-ping)',
       },
     },
   },

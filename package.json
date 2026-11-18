@@ -21,6 +21,7 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt",
+    "weme": "weme-ui",
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
@@ -44,6 +45,7 @@
     "@weme-ui/schema": "^6.1.6",
     "@weme-ui/unocss-preset": "^6.1.6",
     "@weme-ui/utilities": "^6.1.6",
+    "@weme-ui/weme-ui": "^6.1.7",
     "clsx": "^2.1.1",
     "defu": "^6.1.7",
     "lint-staged": "^17.6.1",
