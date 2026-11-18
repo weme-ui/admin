@@ -1,0 +1,426 @@
+{
+  "$schema": "https://weme-ui.github.io/weme-ui/lockfile.schema.json",
+  "items": [
+    {
+      "name": "utils",
+      "type": "util",
+      "registry": "weme-ui/slim",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/utils/props.ts",
+          "dest": "src/utils/props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/utils/styles.ts",
+          "dest": "src/utils/styles.ts"
+        }
+      ]
+    },
+    {
+      "name": "theme",
+      "type": "theme",
+      "registry": "weme-ui/slim",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/themes/slim.theme.ts",
+          "dest": "src/themes/slim.theme.ts"
+        }
+      ]
+    },
+    {
+      "name": "config-provider",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/config-provider/config-provider.vue",
+          "dest": "src/components/ui/config-provider/config-provider.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/config-provider/config-provider.props.ts",
+          "dest": "src/components/ui/config-provider/config-provider.props.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/config-provider/README.md",
+          "dest": "src/components/ui/config-provider/README.md"
+        }
+      ]
+    },
+    {
+      "name": "icon",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/icon/icon.vue",
+          "dest": "src/components/ui/icon/icon.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/icon/icon.props.ts",
+          "dest": "src/components/ui/icon/icon.props.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/icon/README.md",
+          "dest": "src/components/ui/icon/README.md"
+        }
+      ]
+    },
+    {
+      "name": "animated-toggle-icon",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/animated-toggle-icon/animated-toggle-icon.vue",
+          "dest": "src/components/ui/animated-toggle-icon/animated-toggle-icon.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/animated-toggle-icon/animated-toggle-icon.props.ts",
+          "dest": "src/components/ui/animated-toggle-icon/animated-toggle-icon.props.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/animated-toggle-icon/README.md",
+          "dest": "src/components/ui/animated-toggle-icon/README.md"
+        }
+      ]
+    },
+    {
+      "name": "float",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/float/float.vue",
+          "dest": "src/components/ui/float/float.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/float/float.props.ts",
+          "dest": "src/components/ui/float/float.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/float/float.style.ts",
+          "dest": "src/components/ui/float/float.style.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/float/README.md",
+          "dest": "src/components/ui/float/README.md"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/tooltip/tooltip.vue",
+          "dest": "src/components/ui/tooltip/tooltip.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/tooltip/tooltip.props.ts",
+          "dest": "src/components/ui/tooltip/tooltip.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/tooltip/tooltip.style.ts",
+          "dest": "src/components/ui/tooltip/tooltip.style.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/tooltip/README.md",
+          "dest": "src/components/ui/tooltip/README.md"
+        }
+      ]
+    },
+    {
+      "name": "activity-bar",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/activity-bar/activity-bar.vue",
+          "dest": "src/components/ui/activity-bar/activity-bar.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/activity-bar/activity-bar.props.ts",
+          "dest": "src/components/ui/activity-bar/activity-bar.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/activity-bar/activity-bar.style.ts",
+          "dest": "src/components/ui/activity-bar/activity-bar.style.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/activity-bar/README.md",
+          "dest": "src/components/ui/activity-bar/README.md"
+        }
+      ]
+    },
+    {
+      "name": "icon",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/icon/icon.vue",
+          "dest": "src/components/ui/icon/icon.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/icon/icon.props.ts",
+          "dest": "src/components/ui/icon/icon.props.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/icon/README.md",
+          "dest": "src/components/ui/icon/README.md"
+        }
+      ]
+    },
+    {
+      "name": "animated-toggle-icon",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/animated-toggle-icon/animated-toggle-icon.vue",
+          "dest": "src/components/ui/animated-toggle-icon/animated-toggle-icon.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/animated-toggle-icon/animated-toggle-icon.props.ts",
+          "dest": "src/components/ui/animated-toggle-icon/animated-toggle-icon.props.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/animated-toggle-icon/README.md",
+          "dest": "src/components/ui/animated-toggle-icon/README.md"
+        }
+      ]
+    },
+    {
+      "name": "link-overlay",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/link-overlay/link-overlay.vue",
+          "dest": "src/components/ui/link-overlay/link-overlay.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/link-overlay/link-overlay.props.ts",
+          "dest": "src/components/ui/link-overlay/link-overlay.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/link-overlay/link-overlay.style.ts",
+          "dest": "src/components/ui/link-overlay/link-overlay.style.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/link-overlay/README.md",
+          "dest": "src/components/ui/link-overlay/README.md"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/badge/badge.vue",
+          "dest": "src/components/ui/badge/badge.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/badge/badge.props.ts",
+          "dest": "src/components/ui/badge/badge.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/badge/badge.style.ts",
+          "dest": "src/components/ui/badge/badge.style.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/badge/README.md",
+          "dest": "src/components/ui/badge/README.md"
+        }
+      ]
+    },
+    {
+      "name": "chip",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/chip/chip.vue",
+          "dest": "src/components/ui/chip/chip.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/chip/chip.props.ts",
+          "dest": "src/components/ui/chip/chip.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/chip/chip.style.ts",
+          "dest": "src/components/ui/chip/chip.style.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/chip/README.md",
+          "dest": "src/components/ui/chip/README.md"
+        }
+      ]
+    },
+    {
+      "name": "link",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/link/link.vue",
+          "dest": "src/components/ui/link/link.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/link/link.props.ts",
+          "dest": "src/components/ui/link/link.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/link/link.style.ts",
+          "dest": "src/components/ui/link/link.style.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/link/README.md",
+          "dest": "src/components/ui/link/README.md"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/navigation-menu/navigation-menu.vue",
+          "dest": "src/components/ui/navigation-menu/navigation-menu.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/navigation-menu/navigation-menu.props.ts",
+          "dest": "src/components/ui/navigation-menu/navigation-menu.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/navigation-menu/navigation-menu.style.ts",
+          "dest": "src/components/ui/navigation-menu/navigation-menu.style.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/navigation-menu/navigation-menu-list.vue",
+          "dest": "src/components/ui/navigation-menu/navigation-menu-list.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/navigation-menu/navigation-menu-list.props.ts",
+          "dest": "src/components/ui/navigation-menu/navigation-menu-list.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/navigation-menu/navigation-menu-item.vue",
+          "dest": "src/components/ui/navigation-menu/navigation-menu-item.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/navigation-menu/navigation-menu-item.props.ts",
+          "dest": "src/components/ui/navigation-menu/navigation-menu-item.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/navigation-menu/navigation-menu-item.style.ts",
+          "dest": "src/components/ui/navigation-menu/navigation-menu-item.style.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/navigation-menu/README.md",
+          "dest": "src/components/ui/navigation-menu/README.md"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/scroll-area/scroll-area.vue",
+          "dest": "src/components/ui/scroll-area/scroll-area.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/scroll-area/scroll-area.props.ts",
+          "dest": "src/components/ui/scroll-area/scroll-area.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/scroll-area/scroll-area.style.ts",
+          "dest": "src/components/ui/scroll-area/scroll-area.style.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/scroll-area/README.md",
+          "dest": "src/components/ui/scroll-area/README.md"
+        }
+      ]
+    }
+  ]
+}

@@ -20,7 +20,7 @@ dist
 *.tsbuildinfo
 
 # Weme
-.weme
+.weme/cache
 
 # Generated files
 auto-imports.d.ts

@@ -23,6 +23,11 @@
         "active-bg": "neutral.3",
         "active-color": "neutral.12"
       },
+      "scrollbar": {
+        "color": "neutral.3",
+        "thumb-color": "neutral.8",
+        "thumb-hover-color": "neutral.9"
+      },
       "tooltip": {
         "background": "neutral.12",
         "color": "neutral.1"

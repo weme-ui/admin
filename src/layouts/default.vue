@@ -63,7 +63,6 @@ const menus = computed(
               label: 'Users',
               icon: 'mingcute:user-3-line',
               to: '/users',
-              chip: true,
             },
             {
               id: 'roles',
@@ -71,9 +70,206 @@ const menus = computed(
               label: 'Roles',
               icon: 'mingcute:safe-lock-line',
               to: '/roles',
-              chip: true,
             },
           ],
+        },
+      ],
+      [
+        {
+          id: 'manage',
+          type: 'label',
+          label: 'Manage',
+          icon: 'mingcute:tool-line',
+          children: [
+            {
+              id: 'users',
+              type: 'link',
+              label: 'Users',
+              icon: 'mingcute:user-3-line',
+              to: '/users',
+            },
+            {
+              id: 'roles',
+              type: 'link',
+              label: 'Roles',
+              icon: 'mingcute:safe-lock-line',
+              to: '/roles',
+            },
+          ],
+        },
+
+        {
+          type: 'separator',
+          label: 'Separator',
+        },
+
+        {
+          id: 'users',
+          type: 'link',
+          label: 'Users',
+          icon: 'mingcute:user-3-line',
+          to: '/users',
+        },
+        {
+          id: 'roles',
+          type: 'link',
+          label: 'Roles',
+          icon: 'mingcute:safe-lock-line',
+          to: '/roles',
+        },
+        {
+          id: 'users',
+          type: 'link',
+          label: 'Users',
+          icon: 'mingcute:user-3-line',
+          to: '/users',
+        },
+        {
+          id: 'roles',
+          type: 'link',
+          label: 'Roles',
+          icon: 'mingcute:safe-lock-line',
+          to: '/roles',
+        },
+        {
+          id: 'users',
+          type: 'link',
+          label: 'Users',
+          icon: 'mingcute:user-3-line',
+          to: '/users',
+        },
+        {
+          id: 'roles',
+          type: 'link',
+          label: 'Roles',
+          icon: 'mingcute:safe-lock-line',
+          to: '/roles',
+        },
+        {
+          id: 'users',
+          type: 'link',
+          label: 'Users',
+          icon: 'mingcute:user-3-line',
+          to: '/users',
+        },
+        {
+          id: 'roles',
+          type: 'link',
+          label: 'Roles',
+          icon: 'mingcute:safe-lock-line',
+          to: '/roles',
+        },
+        {
+          id: 'users',
+          type: 'link',
+          label: 'Users',
+          icon: 'mingcute:user-3-line',
+          to: '/users',
+        },
+        {
+          id: 'roles',
+          type: 'link',
+          label: 'Roles',
+          icon: 'mingcute:safe-lock-line',
+          to: '/roles',
+        },
+        {
+          id: 'users',
+          type: 'link',
+          label: 'Users',
+          icon: 'mingcute:user-3-line',
+          to: '/users',
+        },
+        {
+          id: 'roles',
+          type: 'link',
+          label: 'Roles',
+          icon: 'mingcute:safe-lock-line',
+          to: '/roles',
+        },
+        {
+          id: 'users',
+          type: 'link',
+          label: 'Users',
+          icon: 'mingcute:user-3-line',
+          to: '/users',
+        },
+        {
+          id: 'roles',
+          type: 'link',
+          label: 'Roles',
+          icon: 'mingcute:safe-lock-line',
+          to: '/roles',
+        },
+        {
+          id: 'users',
+          type: 'link',
+          label: 'Users',
+          icon: 'mingcute:user-3-line',
+          to: '/users',
+        },
+        {
+          id: 'roles',
+          type: 'link',
+          label: 'Roles',
+          icon: 'mingcute:safe-lock-line',
+          to: '/roles',
+        },
+        {
+          id: 'users',
+          type: 'link',
+          label: 'Users',
+          icon: 'mingcute:user-3-line',
+          to: '/users',
+        },
+        {
+          id: 'roles',
+          type: 'link',
+          label: 'Roles',
+          icon: 'mingcute:safe-lock-line',
+          to: '/roles',
+        },
+        {
+          id: 'users',
+          type: 'link',
+          label: 'Users',
+          icon: 'mingcute:user-3-line',
+          to: '/users',
+        },
+        {
+          id: 'roles',
+          type: 'link',
+          label: 'Roles',
+          icon: 'mingcute:safe-lock-line',
+          to: '/roles',
+        },
+        {
+          id: 'users',
+          type: 'link',
+          label: 'Users',
+          icon: 'mingcute:user-3-line',
+          to: '/users',
+        },
+        {
+          id: 'roles',
+          type: 'link',
+          label: 'Roles',
+          icon: 'mingcute:safe-lock-line',
+          to: '/roles',
+        },
+        {
+          id: 'users',
+          type: 'link',
+          label: 'Users',
+          icon: 'mingcute:user-3-line',
+          to: '/users',
+        },
+        {
+          id: 'roles',
+          type: 'link',
+          label: 'Roles',
+          icon: 'mingcute:safe-lock-line',
+          to: '/roles',
         },
       ],
     ] satisfies NavigationMenuItem[][],
@@ -99,9 +295,9 @@ const menus = computed(
       class="py-2"
       collapsible
     >
-      <div class="b b-neutral-3 rounded-lg bg-neutral-2/80 size-full">
+      <div class="relative b b-neutral-3 rounded-lg bg-neutral-2/80 h-full">
         <UiScrollArea class="size-full">
-          <UiNavigationMenu :items="menus" class="p-3" />
+          <UiNavigationMenu :items="menus" class="p-3" :ui="{ separator: 'b-neutral-3' }" />
         </UiScrollArea>
       </div>
     </SplitterPanel>

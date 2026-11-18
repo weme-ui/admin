@@ -135,13 +135,12 @@ export default defineConfig(({ mode }) => {
       include: [
         '@iconify/vue',
         '@vueuse/core',
-        '@weme-ui/unocss-preset/tokens',
         'clsx',
         'defu',
         'motion-v',
         'reka-ui',
         'tailwind-merge',
-        'tailwind-variants/config',
+        'tailwind-variants/lite',
       ],
     },
 
@@ -155,6 +154,10 @@ export default defineConfig(({ mode }) => {
     test: {
       include: ['test/**/*.test.ts'],
       environment: 'jsdom',
+    },
+
+    devtools: {
+      apply: 'serve',
     },
 
     plugins: [

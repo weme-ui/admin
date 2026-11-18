@@ -1,32 +1,15 @@
-import type { ProjectConfigSchema } from '@weme-ui/schema'
-import type { Theme } from '@weme-ui/unocss-preset/types'
-import type { InferInput } from 'valibot'
+import type { Theme } from '@weme-ui/unocss-preset'
 import { presetWemeUI } from '@weme-ui/unocss-preset'
-import { mergeConfigs, transformerDirectives } from 'unocss'
-import baseConfig from './.weme/uno.config'
-import { unoTheme } from './src/themes/slim.theme'
-import wemeConfigJson from './weme.config.json' with { type: 'json' }
+import { defineConfig } from 'unocss'
 
-const wemeConfig = wemeConfigJson as InferInput<typeof ProjectConfigSchema>
+export default defineConfig<Theme>({
+  presets: [presetWemeUI()],
 
-export default mergeConfigs<Theme>([
-  baseConfig,
-  {
-    theme: unoTheme,
-    transformers: [transformerDirectives()],
-    presets: [
-      presetWemeUI({
-        themes: [
-          {
-            colors: {
-              accent: 'clay',
-              neutral: 'gray',
-            },
-          },
-        ],
-        colors: wemeConfig.unocss?.colors || {},
-        cssVars: wemeConfig.unocss?.cssVars || {},
-      }),
-    ],
+  content: {
+    pipeline: {
+      include: [
+        /\.(vue|svelte|[jt]sx|vine.ts|style.[jt]s|mdx?|astro|elm|php|phtml|marko|html)($|\?)/,
+      ],
+    },
   },
-])
+})
