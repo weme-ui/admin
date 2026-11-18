@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { ActivityBarEmits, ActivityBarItem, ActivityBarProps } from './activity-bar.props'
 import { createReusableTemplate, useVModel } from '@vueuse/core'
+import { Motion } from 'motion-v'
 import { Primitive, RovingFocusGroup, RovingFocusItem, useForwardExpose } from 'reka-ui'
 import { computed, toRef } from 'vue'
 import { toBoolAriaValue } from '~/utils/props'
@@ -55,23 +56,33 @@ useForwardExpose()
       as-child
     >
       <RovingFocusItem
-        as="button"
         :aria-label="item.tooltip || item.label"
         :aria-current="toBoolAriaValue(active === item.id)"
         :disabled="item.disabled"
         :class="cn(ui.item(), props.ui?.item, item.class)"
         @click="handleActiveChange(item)"
+        as-child
       >
-        <Float v-if="item.chipped" placement="top-right" offset="1px">
-          <span :class="cn(ui.itemChip(), props.ui?.itemChip)" />
-        </Float>
+        <Motion
+          as="button"
+          :while-hover="
+            active !== item.id ? { scale: 1.2, transition: { duration: 0.2 } } : undefined
+          "
+          :while-press="
+            active !== item.id ? { scale: 0.9, transition: { duration: 0.2 } } : undefined
+          "
+        >
+          <Float v-if="item.chipped" placement="top-right" offset="1px">
+            <span :class="cn(ui.itemChip(), props.ui?.itemChip)" />
+          </Float>
 
-        <AnimatedToggleIcon
-          v-if="item.icon"
-          :active="active === item.id"
-          :icon="item.icon"
-          :active-icon="item.activeIcon"
-        />
+          <AnimatedToggleIcon
+            v-if="item.icon"
+            :active="active === item.id"
+            :icon="item.icon"
+            :active-icon="item.activeIcon"
+          />
+        </Motion>
       </RovingFocusItem>
     </Tooltip>
   </DefineActivityBarItem>

@@ -5,9 +5,9 @@ export const useTooltipStyle = createVariants({
   slots: {
     trigger: 'focus-visible:outline-none',
     content:
-      'text-xs text-tooltip px-sm py-xs rounded bg-tooltip flex gap-xs pointer-events-auto select-none origin-$reka-tooltip-content-transform-origin flex-center z-highest backdrop-blur-3xl',
+      'text-xs text-tooltip px-sm py-xs rounded bg-tooltip/90 flex gap-xs pointer-events-auto select-none origin-$reka-tooltip-content-transform-origin flex-center z-tooltip backdrop-blur-3xl data-[state=delayed-open]:animate-scale-in data-[state=closed]:animate-scale-out',
     icon: 'shrink-0',
-    arrow: 'fill-tooltip backdrop-blur-3xl',
+    arrow: 'fill-tooltip/90 backdrop-blur-3xl',
   },
 
   variants: {

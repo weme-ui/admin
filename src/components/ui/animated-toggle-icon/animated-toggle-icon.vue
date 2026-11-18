@@ -25,7 +25,7 @@ const props = defineProps<AnimatedToggleIconProps>()
       :transition="{
         ease: 'easeOut',
         duration: 0.15,
-        bounce: 0.3,
+        bounce: 0.5,
       }"
       :class="cn('shrink-0 pointer-events-none', props.class)"
       as-child

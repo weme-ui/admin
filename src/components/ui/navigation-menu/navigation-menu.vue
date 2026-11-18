@@ -44,7 +44,7 @@ function isActive(item: NavigationMenuItemType): boolean {
   >
     <slot v-bind="{ groups, active, isActive }">
       <template v-for="(group, gIdx) in groups" :key="`g-${gIdx}`">
-        <NavigationMenuList>
+        <NavigationMenuList :class="cn(ui.list(), props.ui?.list)">
           <NavigationMenuItem
             v-for="(item, idx) in group"
             :key="`g-${gIdx}-${idx}`"
@@ -52,6 +52,13 @@ function isActive(item: NavigationMenuItemType): boolean {
             :variant="item.type === 'label' ? 'muted' : 'default'"
             :external-icon="externalIcon"
             :active="isActive(item)"
+            :class="cn(ui.item(), props.ui?.item, item.class)"
+            :ui="{
+              root: item.type === 'separator' ? cn(ui.separator(), props.ui?.separator) : '',
+              icon: cn(ui.icon(), props.ui?.icon),
+              label: cn(ui.label(), props.ui?.label),
+              append: cn(ui.append(), props.ui?.append),
+            }"
           >
             <template #icon>
               <slot
@@ -80,6 +87,7 @@ function isActive(item: NavigationMenuItemType): boolean {
             <NavigationMenuList
               v-if="item.children && item.children.length > 0"
               :key="`g-${gIdx}-${idx}-children`"
+              :class="cn(ui.list(), props.ui?.list)"
             >
               <NavigationMenuItem
                 v-for="(child, cIdx) in item.children"
@@ -87,6 +95,13 @@ function isActive(item: NavigationMenuItemType): boolean {
                 v-bind="child"
                 :external-icon="externalIcon"
                 :active="isActive(child)"
+                :class="cn(ui.item(), props.ui?.item, item.class)"
+                :ui="{
+                  root: cn(ui.item(), props.ui?.item),
+                  icon: cn(ui.icon(), props.ui?.icon),
+                  label: cn(ui.label(), props.ui?.label),
+                  append: cn(ui.append(), props.ui?.append),
+                }"
               >
                 <template #icon>
                   <slot
@@ -115,6 +130,7 @@ function isActive(item: NavigationMenuItemType): boolean {
                 <NavigationMenuList
                   v-if="child.children && child.children.length > 0"
                   :key="`g-${gIdx}-${idx}-${cIdx}-children`"
+                  :class="cn(ui.list(), props.ui?.list)"
                   is-submenu
                 >
                   <NavigationMenuItem
@@ -123,6 +139,13 @@ function isActive(item: NavigationMenuItemType): boolean {
                     :key="`g-${gIdx}-${idx}-${cIdx}-${subIdx}`"
                     :external-icon="externalIcon"
                     :active="isActive(child)"
+                    :class="cn(ui.item(), props.ui?.item, child.class)"
+                    :ui="{
+                      root: cn(ui.item(), props.ui?.item),
+                      icon: cn(ui.icon(), props.ui?.icon),
+                      label: cn(ui.label(), props.ui?.label),
+                      append: cn(ui.append(), props.ui?.append),
+                    }"
                   >
                     <template #icon>
                       <slot
