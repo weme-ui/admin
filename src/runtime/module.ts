@@ -85,7 +85,7 @@ export function defineModule(id: string, definition: ModuleDefinition): ModuleHa
 interface UseModulesReturn {
   store: Ref<Module[]>
   matched: ComputedRef<Module | undefined>
-  findModule: (...moduleIds: string[]) => Module[]
+  findModules: (...moduleIds: string[]) => Module[]
 }
 
 /**
@@ -102,8 +102,8 @@ interface UseModulesReturn {
  * console.log(matched.value)
  *
  * // Find modules by id
- * console.log(findModule('module-id'))
- * console.log(findModule('module-id-1', 'module-id-2'))
+ * console.log(findModules('module-id'))
+ * console.log(findModules('module-id-1', 'module-id-2'))
  * ```
  */
 export function useModules(): UseModulesReturn {
@@ -113,13 +113,13 @@ export function useModules(): UseModulesReturn {
   const store = inject<Ref<Module[]>>(MODULE_INJECTION_KEY, ref<Module[]>([]))
   const matched = computed(() => store.value.find((m) => leading.value.path.startsWith(`/${m.id}`)))
 
-  function findModule(...moduleIds: string[]): Module[] {
+  function findModules(...moduleIds: string[]): Module[] {
     return store.value.filter((m) => moduleIds.includes(m.id)).toSorted(sortByAsc)
   }
 
   return {
     store,
     matched,
-    findModule,
+    findModules,
   }
 }

@@ -5,7 +5,7 @@ import { createPinia } from 'pinia'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { createApp, ref } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import { handleHotUpdate, routes } from 'vue-router/auto-routes'
+import { routes } from 'vue-router/auto-routes'
 import { registerDevToolsPlugin } from './internal/devtools'
 import { Hook } from './internal/hook'
 import { loadExtensions, loadMiddlewares, loadModules } from './internal/loader'
@@ -90,10 +90,6 @@ export function createRuntime(App: Component, fn?: RuntimeCallback, options?: Ru
     await ctx.router.isReady()
 
     ctx.hooks.callHook('runtime:ready', ctx)
-
-    if (import.meta.hot) {
-      handleHotUpdate(ctx.router)
-    }
   })()
 
   return createVueApp
