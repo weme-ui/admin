@@ -18,6 +18,9 @@
   ],
   "unocss": {
     "cssVars": {
+      "popover": {
+        "bg": "neutral.1"
+      },
       "activity-bar": {
         "width": "3.5rem",
         "active-bg": "neutral.3",

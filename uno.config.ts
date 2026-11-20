@@ -1,9 +1,13 @@
 import type { Theme } from '@weme-ui/unocss-preset'
 import { presetWemeUI } from '@weme-ui/unocss-preset'
-import { defineConfig } from 'unocss'
+import { defineConfig, transformerDirectives } from 'unocss'
 
 export default defineConfig<Theme>({
   presets: [presetWemeUI()],
+
+  transformers: [transformerDirectives()],
+
+  safelist: ['isolate'],
 
   content: {
     pipeline: {
