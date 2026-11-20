@@ -16,6 +16,9 @@ export const twMerge = extendTailwindMerge<any>({
       box: [{ box: [validators.isAny] }],
       anchor: [{ anchor: [validators.isAny] }],
     },
+    conflictingClassGroups: {
+      'outline-color': ['outline-style'],
+    },
   },
 })
 
