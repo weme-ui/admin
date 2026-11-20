@@ -6,7 +6,7 @@ export const useNavigationMenuItemStyle = createVariants({
     root: 'relative',
     base: 'group flex gap-2 items-center',
     icon: '',
-    label: 'cursor-default select-none',
+    label: 'select-none',
     append: 'ml-auto flex flex-center',
   },
 
@@ -22,7 +22,7 @@ export const useNavigationMenuItemStyle = createVariants({
     type: {
       label: {},
       link: {
-        base: 'text-sm px-3 py-1.5 rounded-md transition-colors data-[active]:(text-highlighted font-medium bg-muted) not-[data-active]:text-default hover:not-[data-active]:(text-highlighted bg-muted/50)',
+        base: 'text-sm px-3 py-1.5 rounded-md transition-colors data-[active]:(text-highlighted font-medium bg-muted) not-[data-active]:text-default hover:not-[data-active]:(text-highlighted bg-muted/70)',
         icon: 'size-4 group-data-[active]:text-highlighted group-not-[[data-active]]:text-subtle group-not-[[data-active]]:group-hover:text-default',
       },
       separator: {

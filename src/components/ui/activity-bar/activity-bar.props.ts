@@ -15,7 +15,7 @@ export interface ActivityBarItem {
 }
 
 export interface ActivityBarGroup {
-  slot: 'content' | 'footer'
+  slot: 'start' | 'end'
   items: ActivityBarItem[]
 }
 

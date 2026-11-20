@@ -15,7 +15,7 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<ActivityBarProps>(), { as: 'nav' })
+const props = withDefaults(defineProps<ActivityBarProps>(), { as: 'aside' })
 const emits = defineEmits<ActivityBarEmits>()
 
 const active = useVModel<ActivityBarProps, 'active', 'update:active'>(props, 'active', emits, {
@@ -25,8 +25,8 @@ const active = useVModel<ActivityBarProps, 'active', 'update:active'>(props, 'ac
 const ui = useActivityBarStyle()
 const groups = toRef(() => props.groups)
 
-const contentGroups = computed(() => groups.value?.filter((group) => group.slot === 'content'))
-const footerGroups = computed(() => groups.value?.filter((group) => group.slot === 'footer'))
+const startGroups = computed(() => groups.value?.filter((group) => group.slot === 'start'))
+const endGroups = computed(() => groups.value?.filter((group) => group.slot === 'end'))
 
 const [DefineActivityBarItem, ReuseActivityBarItem] = createReusableTemplate<{
   item: ActivityBarItem
@@ -37,9 +37,7 @@ async function handleActiveChange(item: ActivityBarItem) {
     return
   }
 
-  if (item.onActive) {
-    await item.onActive(item)
-  }
+  await item.onActive?.(item)
 
   active.value = item.id
   emits('update:active', item.id)
@@ -52,6 +50,7 @@ useForwardExpose()
   <DefineActivityBarItem v-slot="{ item }">
     <Tooltip
       :content="active === item.id ? item.label : item.tooltip || item.label"
+      :ui="{ trigger: cn(ui.item(), props.ui?.item, item.class) }"
       side="right"
       as-child
     >
@@ -59,7 +58,6 @@ useForwardExpose()
         :aria-label="item.tooltip || item.label"
         :aria-current="toBoolAriaValue(active === item.id)"
         :disabled="item.disabled"
-        :class="cn(ui.item(), props.ui?.item, item.class)"
         @click="handleActiveChange(item)"
         as-child
       >
@@ -97,27 +95,24 @@ useForwardExpose()
       <slot name="header" />
     </header>
 
-    <div :class="cn(ui.content(), props.ui?.content)">
-      <slot name="content-top" />
+    <slot name="content-top" />
 
-      <template v-for="(group, gIdx) in contentGroups" :key="`c-${gIdx}`">
+    <div :class="cn(ui.content(), props.ui?.content)">
+      <template v-for="(group, gIdx) in startGroups" :key="`g-${gIdx}`">
         <RovingFocusGroup orientation="vertical" :class="cn(ui.group(), props.ui?.group)">
-          <template v-for="(item, idx) in group.items" :key="`c-${gIdx}-${idx}`">
+          <template v-for="(item, idx) in group.items" :key="`g-${gIdx}-${idx}`">
             <ReuseActivityBarItem :item="item" />
           </template>
         </RovingFocusGroup>
       </template>
-
-      <slot name="content-bottom" />
     </div>
 
-    <footer
-      v-if="footerGroups && footerGroups.length > 0"
-      :class="cn(ui.footer(), props.ui?.footer)"
-    >
-      <template v-for="(group, gIdx) in footerGroups" :key="`f-${gIdx}`">
+    <slot name="content-bottom" />
+
+    <footer v-if="endGroups && endGroups.length > 0" :class="cn(ui.footer(), props.ui?.footer)">
+      <template v-for="(group, gIdx) in endGroups" :key="`g-${gIdx}`">
         <RovingFocusGroup orientation="vertical" :class="cn(ui.group(), props.ui?.group)">
-          <template v-for="(item, idx) in group.items" :key="`f-${gIdx}-${idx}`">
+          <template v-for="(item, idx) in group.items" :key="`g-${gIdx}-${idx}`">
             <ReuseActivityBarItem :item="item" />
           </template>
         </RovingFocusGroup>

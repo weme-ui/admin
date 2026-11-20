@@ -13,7 +13,7 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<LinkProps>(), {
-  color: 'accent',
+  color: 'default',
   unstyled: false,
   externalIcon: 'ri:external-link-line',
 })

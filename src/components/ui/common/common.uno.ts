@@ -3,6 +3,23 @@ import type { UserExtendUnoConfig } from '@weme-ui/utilities'
 import { hasParseableColor, isRequiresInvertedColor, isThemeNeutralColor } from '@weme-ui/utilities'
 
 export default <UserExtendUnoConfig<Theme>>{
+  animations: {
+    keyframes: {
+      'scale-in': '{0%{transform:scale(0.9);opacity:0}100%{transform:scale(1);opacity:1}}',
+      'scale-out': '{0%{transform:scale(1);opacity:1}100%{transform:scale(0.9);opacity:0}}',
+    },
+
+    durations: {
+      'scale-in': '0.1s',
+      'scale-out': '0.1s',
+    },
+
+    timingFns: {
+      'scale-in': 'ease-out',
+      'scale-out': 'ease-in',
+    },
+  },
+
   shortcuts: [
     [
       /^box-(.+)$/,

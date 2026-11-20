@@ -19,7 +19,7 @@
       ]
     },
     {
-      "name": "theme",
+      "name": "default-theme",
       "type": "theme",
       "registry": "weme-ui/slim",
       "files": [
@@ -475,6 +475,305 @@
           "kind": "doc",
           "source": "src/components/button/README.md",
           "dest": "src/components/ui/button/README.md"
+        }
+      ]
+    },
+    {
+      "name": "theme",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/theme/theme.vue",
+          "dest": "src/components/ui/theme/theme.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/theme/theme.props.ts",
+          "dest": "src/components/ui/theme/theme.props.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-theme",
+      "type": "composable",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/composables/use-theme.ts",
+          "dest": "src/composables/use-theme.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-theme",
+      "type": "composable",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/composables/use-theme.ts",
+          "dest": "src/composables/use-theme.ts"
+        }
+      ]
+    },
+    {
+      "name": "theme-provider",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/theme-provider/theme-provider.vue",
+          "dest": "src/components/ui/theme-provider/theme-provider.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/theme-provider/theme-provider.props.ts",
+          "dest": "src/components/ui/theme-provider/theme-provider.props.ts"
+        }
+      ]
+    },
+    {
+      "name": "icon",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/icon/icon.vue",
+          "dest": "src/components/ui/icon/icon.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/icon/icon.props.ts",
+          "dest": "src/components/ui/icon/icon.props.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/icon/README.md",
+          "dest": "src/components/ui/icon/README.md"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/button/button.vue",
+          "dest": "src/components/ui/button/button.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/button/button.props.ts",
+          "dest": "src/components/ui/button/button.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/button/button.style.ts",
+          "dest": "src/components/ui/button/button.style.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/button/button.uno.ts",
+          "dest": "src/components/ui/button/button.uno.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/button/README.md",
+          "dest": "src/components/ui/button/README.md"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/button-group/button-group.vue",
+          "dest": "src/components/ui/button-group/button-group.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/button-group/button-group.props.ts",
+          "dest": "src/components/ui/button-group/button-group.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/button-group/button-group.style.ts",
+          "dest": "src/components/ui/button-group/button-group.style.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/button-group/README.md",
+          "dest": "src/components/ui/button-group/README.md"
+        }
+      ]
+    },
+    {
+      "name": "icon",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/icon/icon.vue",
+          "dest": "src/components/ui/icon/icon.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/icon/icon.props.ts",
+          "dest": "src/components/ui/icon/icon.props.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/icon/README.md",
+          "dest": "src/components/ui/icon/README.md"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/avatar/avatar.vue",
+          "dest": "src/components/ui/avatar/avatar.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/avatar/avatar.props.ts",
+          "dest": "src/components/ui/avatar/avatar.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/avatar/avatar.style.ts",
+          "dest": "src/components/ui/avatar/avatar.style.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/avatar/README.md",
+          "dest": "src/components/ui/avatar/README.md"
+        }
+      ]
+    },
+    {
+      "name": "icon",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/icon/icon.vue",
+          "dest": "src/components/ui/icon/icon.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/icon/icon.props.ts",
+          "dest": "src/components/ui/icon/icon.props.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/icon/README.md",
+          "dest": "src/components/ui/icon/README.md"
+        }
+      ]
+    },
+    {
+      "name": "link",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/link/link.vue",
+          "dest": "src/components/ui/link/link.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/link/link.props.ts",
+          "dest": "src/components/ui/link/link.props.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/link/link.style.ts",
+          "dest": "src/components/ui/link/link.style.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/link/link.uno.ts",
+          "dest": "src/components/ui/link/link.uno.ts"
+        },
+        {
+          "kind": "doc",
+          "source": "src/components/link/README.md",
+          "dest": "src/components/ui/link/README.md"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/breadcrumb/breadcrumb.vue",
+          "dest": "src/components/ui/breadcrumb/breadcrumb.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/breadcrumb/breadcrumb.style.ts",
+          "dest": "src/components/ui/breadcrumb/breadcrumb.style.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/breadcrumb/breadcrumb.props.ts",
+          "dest": "src/components/ui/breadcrumb/breadcrumb.props.ts"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "component",
+      "registry": "weme-ui/slim",
+      "prefix": "ui",
+      "files": [
+        {
+          "kind": "file",
+          "source": "src/components/popover/popover.vue",
+          "dest": "src/components/ui/popover/popover.vue"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/popover/popover.style.ts",
+          "dest": "src/components/ui/popover/popover.style.ts"
+        },
+        {
+          "kind": "file",
+          "source": "src/components/popover/popover.props.ts",
+          "dest": "src/components/ui/popover/popover.props.ts"
         }
       ]
     }
