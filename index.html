@@ -18,6 +18,13 @@
         margin: 0;
       }
     </style>
+    <script>
+      ;(() => {
+        let e = localStorage.getItem('weme-theme-appearance') || 'auto',
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ;(!e || e === 'auto' ? t : e === 'dark') && document.documentElement.classList.add('dark')
+      })()
+    </script>
   </head>
   <body>
     <div id="app" class="isolate">
